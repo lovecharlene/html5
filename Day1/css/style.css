@@ -1,0 +1,15 @@
+.head {
+			width: 800px;
+			height: 200px;
+			background: gray;
+		}
+		.body{
+			width: 800px;
+			height:200px;
+			background: green;
+		}
+		.footer{
+			width:800px;
+			height: 200px;
+			background:#333;
+		}
