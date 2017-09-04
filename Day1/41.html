@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	input{
+	border: 1px solid red;	
+	}
+	input[name=email]{
+		background: gray;
+	}
+	li:first-child{
+		color:blue;
+	}
+	li:last-child{
+		color:yellow;
+	}
+	li:nth-child(3){
+		color:orange;
+	}
+p::before{
+	content:"^-^";
+}
+p::after{
+	content:"(:"
+}
+p{
+	border:5px solid blue;
+}
+	</style>
+
+</head>
+<body>
+	<input type="test"name="username">
+	<input type="test"name="email">
+	<ul>
+		<li>春</li>
+		<li>夏</li>
+		<li>秋</li>
+		<li>冬</li>
+	</ul>
+	<p>第一段</p>
+	<p>第二段</p>
+	<p>第三段</p>
+</body>
+</html>

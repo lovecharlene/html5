@@ -1,0 +1,14 @@
+@import url(./23.css);  
+   div #test1{
+		color:orange;
+	}
+	#test1{
+		color:blue;
+	}
+	.test2{
+		color:purple;
+	}
+    p{
+	    border:10px solid gray;
+	    color:red;
+	}
