@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="./css/13.css">
+	<meta charset="UTF-8">
+	<title>practice</title>
+</head>
+<body>
+	<div class='task-list' id='pending'>
+		<h3>待处理</h3>
+
+		<div class='todo-task' id="" data="">
+			<div class='task-header'>题目</div>
+			<div class='task-date'>11/01/2014</div>
+			<div class='task-description'>内容</div>
+		</div>
+		<div class='todo-task'>
+			<div class='task-header'>Go back to CN</div>
+			<div class='task-date'>11/01/2019</div>
+			<div class='task-description'>回国</div>
+		</div>
+	</div>
+
+<div class='task-list' id='progress'>
+	<h3>进行中</h3>
+</div>
+
+<div class='task-list' id='completed'>
+<h3> 已完成</h3>
+</div>
+
+<div class='task-list'>
+<h3>添加项目</h3>
+	<form id='todo-form'>
+<input type='text' placeholder='标题'/>
+<textarea placeholder='内容'></textarea>
+<input type='text' placeholder='截止日期(月/日/年)'/>
+<input type='button' class='btn btn-primary' value='添加项目'/>
+	<div id='delete-div'>拖动到这里删除</div>
+	</form>
+</div>
+
+
+	<script src='./js/jquery-3.2.1.js'></script>
+	<script type="text/javascript">
+//1.基本的添加删除事件
+// 2.存储到local storage
+// 3.支持拖拽
+
+	var My = (function () {
+		var toDo = function() {
+
+		};
+		toDo.prototype.aaa = function() {
+			alert('aaa');
+		};
+		toDo.bbb = function() {
+			alert('bbb');
+		}
+		return toDo;
+	})();
+	My.bbb();
+	// My.aaa();
+	var my = new My();
+	my.aaa();
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

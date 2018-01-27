@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	//条件语句
+	if(true){
+		document.write('hello');
+		document.write('king');
+		var x=1,y=2,username='king';
+	}
+	document.write(x+'--'+y+'--'+username);
+
+
+	//if else 
+     document.write('<hr color="red"/>');
+     var username='king';
+    if(username=='king'){
+
+     document.write('hello king');
+    }else{
+    	document.write('hello maizi');
+    }
+
+
+//if  else if  else if多重条件
+  document.write('<hr color="red"/>');
+      username='king';
+    if(username=='king'){
+     document.write('hello king');
+    }else if(username=='maizi'){
+    	document.write('hello maizi');
+    }else if(username='admin'){
+        document.write('hello admin');	
+    }
+
+
+document.write('<hr color="red"/>');
+    if(true){
+        document.write('a');
+    }else if(3>1){
+    	document.write('b');
+    }
+//第一个表达式为真，结束判断，第一个表达式为假再接着往下判断。
+  
+
+  document.write('<hr color="red"/>');
+    var x=12;
+    if(x==1){
+     document.write('aaa');
+    }else if(x==2){
+    	document.write('bbb');
+    }else if(x==3){
+        document.write('ccc');
+    }else{
+    	document.write('以上表达式都为false执行的代码段')
+    }
+//执行最后一个表达式
+
+//case switch严格比对===
+var i=1;
+switch(i){
+	case 1:
+	document.write('aa');
+	break;
+	case 2:
+	document.write('bb');
+	break;
+	default:
+	document.write('以上case都没有匹配到的时候执行的代码段');
+	break;
+	case 3:
+	document.write('cc');
+	break;
+	case 4:
+	document.write('dd');
+	break;
+}
+ document.write('<br/>continue...');
+
+
+
+ i=1;
+switch(i){
+	case 1:
+	document.write('a');
+	case 2:
+	document.write('b');
+	case 3:
+	document.write('c');
+	case 4:
+	document.write('d');
+}
+//out put abcd(没有break)
+
+
+i=1;
+switch(i){
+	case 1:
+    case 2:
+    case 3:
+         document.write('hello king')
+         break;
+    case 4:
+    case 5:
+    case 6:
+         document.write('hello maizi')
+         break;
+     defalt:
+          document.write('hello everybody')
+         break;
+    }
+
+    //if else if可以比较范围
+    //case switch比较定值
+
+
+    //if嵌套
+    var username='king',age=22,sex='男';
+    if(3>1){
+    	document.write('aa<br/>');
+    	if(username=='king'){
+           document.write('hello king<br/>');
+            if(age>=18){
+           	  document.write('成年人<br/>');
+           	    if(sex=='男'){
+                document.write('帅哥<br/>');
+                }else {
+                   document.write('美女<br/>');
+                } 
+           	}else{
+    	document.write('未成年<br/>'); 
+           }
+    	}else{
+    	document.write('hello others<br/>');
+    	}
+    }else{
+    	document.write('bb<br/>');
+    }
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

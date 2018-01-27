@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+function F(o){
+	function F(){};
+	F.prototype=o;
+	return new F();
+}
+// 如果想访问uber属性
+function object(o){
+	function F(){};
+	F.prototype=o;
+	var n=new F();
+	n.uber=o;
+	return n;
+}
+var Shape={
+	name:'shape',
+	toString:function(){
+		return this.name;
+	}
+};
+var TwoDShape=object(Shape);
+TwoDShape.name='2D Shape';
+TwoDShape.toString=function(){
+	return this.uber.toString()+'--'+this.name;
+}
+var Triangle=object(TwoDShape);
+Triangle.name='triangle';
+Triangle.getArea=function(){
+	return this.side*this.height/2;
+}
+console.log(Triangle.toString());//shape--2D Shape--trianlge
+
+function objectPlus(o, stuff){
+	function F(){};
+	F.prototype=o;
+	var n=new F();
+	n.uber=o;
+	for(var i in stuff){
+		n[i]=stuff[i];
+	}
+	return n;
+}
+var Shape={
+    name:'shape',
+    toString:function(){
+    	return this.name;
+    }
+};
+var TwoDShape=objectPlus(Shape, {
+	name:'2D Shape',
+	toString:function(){
+		return this.uber.toString()+'--'+this.name;
+	}
+});
+var Triangle=objectPlus(TwoDShape, {
+	name:'triangle',
+	getArea:function(){
+		return this.side*this.height/2;
+	},
+	side:0,
+	height:0
+});
+var my = objectPlus(Triangle, {
+	// name: 'MY',
+	side:5,
+	height:10
+});
+console.log(my.getArea());//25
+console.log(my.toString());//shape--2D Shape--triangle--triangle
+
+var my=objectPlus(Triangle,{
+	name:'this is a test',
+	side:10,
+	height:20
+});
+console.log(my.toString());//shape--2D Shape--triangle--this is a test
+
+function multiExtend(){
+	var n={},stuff;//,j=0,len=arguments.length;
+	// console.log(Object.getOwnPropertyDescriptor(arguments, arguments[0]));
+    for(var j=0, len = arguments.length; j<len; j++){
+       stuff=arguments[j];
+       for(var i in stuff){
+       	  // console.log('stuff[i]: ' + stuff[i]);
+       	  n[i]=stuff[i];
+       }
+	}
+	return n;
+};
+var Shape={
+	name:'shape',
+	toString:function(){
+		return this.name;
+	},
+	test: 'this is a Shape'
+};
+var TwoDShape={
+	name:'2D shape',
+	test:'this is a test'
+};
+var Triangle=multiExtend(TwoDShape, Shape, {
+	name:'triangle',
+	getArea:function(){
+    	return this.side*this.height/2;
+	},
+	side:5,
+	height:10
+});
+console.log(Triangle.getArea());//25
+console.log(Triangle.test);//this is a test
+console.log(Triangle.toString());//triangle
+
+
+</script>
+</body>
+</html>

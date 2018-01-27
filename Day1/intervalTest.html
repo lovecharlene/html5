@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>计时器</title>
+<script type="text/javascript">
+   function clock(){
+      var time=new Date();               	  
+      document.getElementById("clock").value = time;
+   }
+   var idx = setInterval('clock()',100);//10
+  // function start(){
+  //     idx = setInterval('clock()',100);
+  // }
+  var idx2 = setInterval('alerta()', 1000); //11
+</script>
+</head>
+<body>
+  <form>
+    <input type="text" id="clock" size="50"  />
+    <input type="button" value="Stop" onclick='clearInterval(idx)' />
+    <input type="button" value="start" onclick="idx = setInterval('clock()',100)"/> 
+  </form>
+</body>
+</html>

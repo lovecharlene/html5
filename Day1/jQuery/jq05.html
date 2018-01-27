@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="./css/5.css">
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <div style='color:red;background-color:yellow'>Hello World</div>	 -->
+	<div>Hello world.</div>
+	<button>Click me</button>
+	<script src=./js/jquery-3.2.1.js></script>
+	<script type="text/javascript">
+// JQuery DOM Manipulation
+// 1.获取设定内容[text(),html()and val()]value获取文本框的内容；
+// 传参可设定
+// 传参数是set，不传是get
+//传函数
+
+// 获取设定属性[attrl,removeAttr()]增加删除属性
+
+// 获取设定CSS Class [addClass(),removeClass(),hasClass(),toggleClass()]//如果有就删掉，，没有就加上
+
+// 获取设定CSS style[css()]
+// get一个参数/set多个参数
+
+
+//text(),html()区别在于text会把其内容转化为字符串
+		$(document).ready(function(){
+			$('button').on('click', function() {
+				// alert($('div').text());
+				// alert($('input').val());
+				// $('input').val('I am Charlene'); //传参
+				// $('div').html('<p>very</p><p>good!</p>');
+		        // $('div').html(function(index,html){
+		        // 	alert(''+index+':'+html);
+		        // });
+		        $('div').attr('data-id','something');
+		        $('div').attr({
+		        	'date-id':'something',
+		        	class:'red'
+		        });
+		  		// $('div').addClass('red');
+		  		// $('div').toggleClass('red');
+		  		// alert($('div').hasClass('red'));//false or true
+		  		// alert(JSON.stringify($('div').css(['color','background-color'])));//{"color":"rgb(255, 0, 0)","background-color":"rgb(255, 255, 0)"}
+		  		// $('div').css('font-size','30px');
+		  		// $('div').css({
+		  		// 	'background-color':'orange',
+		  		// 	color:'white'
+		  		// });
+		  		// $('div').css('font-size',function(index,oldvalue){
+		  		// 	return '80px';//return值会覆盖旧值
+		  		// })
+			});
+		});
+	</script>
+</body>
+</html>

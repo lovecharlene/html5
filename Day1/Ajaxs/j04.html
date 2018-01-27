@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+//0: 请求未初始化
+// 1: 服务器连接已建立
+// 2: 请求已接收
+// 3: 请求处理中
+// 4: 请求已完成，且响应已就绪
+//获取xml文件
+    var xmlHttp=null;
+    function readyStateChangeHandle(){
+      if(xmlHttp.readyState===4 && xmlHttp.status===200){
+        var xmlDOM=xmlHttp.responseXML;//responseText
+        var xmlRoot=xmlDOM.documentElement;
+        try{
+        	var xmlItem = xmlRoot.getElementsByTagName('item');
+        	alert(xmlItem[0].firstChild.data);
+        } catch(e) {
+        	alert(e.message);
+        }
+      }
+    }
+
+    function ajaxRequest(){
+    	if(window.XMLHttpRequest){
+        xmlHttp=new XMLHttpRequest();
+    	}else if(window.ActiveXObject){
+        xmlHttp=new ActiveXObject('Microsoft.XMLHttp');
+    	}
+      xmlHttp.onreadystatechange=readyStateChangeHandle;
+      xmlHttp.open('GET', './data/data.xml', true);
+      xmlHttp.send(null);
+    }
+	</script>
+	<input type='button' onclick='ajaxRequest()' value='Take me to the world of AJAX'>
+</body>
+</html>

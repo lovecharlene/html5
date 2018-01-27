@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div class='a'>a
+	<div class='b'>b</div>
+</div>
+
+<button>Click me</button>
+
+<div class='c'>c</div>
+<script src='./js/jquery-3.2.1.js'></script>
+	<script type="text/javascript">
+// apend() and prepend() methods
+// append插在子元素后面，prepend插在子元素前面，内部前后，成为子元素
+
+// appendTo(t) and prependTo(t) methods
+// 把xx插到t前后
+
+// before()and after()methods不在元素内部插入，
+// eg a before(c)把c移到a之前
+
+// remove(),empty()and.detach()methods
+// empty把它内容变空/remove(),empty()和insertbefore连用，可以返回return的值直接加在指定元素前后
+// detach()跟remove()效果一样，但是如果有eventhandler，可以直接跟在其他元素前后继续使用。
+
+// insertBefore(t) and insertAfter(t) methods外部插入t前后
+
+// wrap() wrapall(),unwrap(),wrapInner()
+	// eg<ul><li></li><ul>
+	// wrap（）是每组li标签外添加ul，wrapall（）是全部li标签外添加ul，unwrap（）是去掉，wrapinner（）是把内容添加其他渲染
+
+// replaceWith()and replaceAll(t)
+// replaceWith()用xx来更改前面的内容，replaceAll(t)xx来更改t
+
+// clone()and Cloning Event Handlers and Data
+// 配合其他fuc（）一起使用，移动复制版本非剪切
+
+$(document).ready(function(){
+	$('button').on('click',function(){
+   			// $('.a').prepend($('.c'));
+   			// $('.c').prependTo($('.a'));
+   			// var a=$('div').empty();
+   			// $('.c').insertBefore($('.a'));
+   			// $('li').wrap('<ul></ul>');
+   			// $('div').replaceWith('<p>Hello world</p>');	
+   			$('.a').before($('.c').clone());
+   		});
+});
+
+
+
+
+
+
+	</script>
+</body>
+</html>

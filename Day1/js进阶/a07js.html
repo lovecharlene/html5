@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+var str='king';
+console.log(typeof str);//string
+var strObj=new String('king');
+console.log(typeof strObj);//object
+console.log(strObj[0]);//第一个字母k
+console.log(strObj.length);//4
+console.log(strObj.valueOf());//king
+console.log(strObj.toString());//king
+console.log('maizi'[0]);//m
+console.log('helloworld'.length);//10
+var str=String('1234');//1234
+//或者
+str=String(true);//true
+console.log(str);
+str=String({x:1});//[object Object]
+str=String(null);//null
+console.log(str);
+
+var str='king'
+console.log(str.charAt(0));//k
+console.log(str.charAt(1));//i
+console.log(str.charAt(2));//n
+console.log(str.charAt(3));//g
+console.log(str.charAt(10));//空
+
+//charCodeAt():返回指定字符的ASCII码值
+//不存在的和负数返回 NaN
+var str='abcdef';
+console.log(str.charCodeAt(0));//97
+console.log(str.charCodeAt(100));//NaN
+console.log(str.charCodeAt(-123));//NaN
+
+//fromCharCode();根据指定的ASCII返回对应的字符
+console.log(String.fromCharCode(97));//a
+console.log(String.fromCharCode(65,66,67));//ABC
+
+//concat()连接字符串
+var str='hello';
+console.log(str.concat('world'));//helloworld
+console.log(str.concat('world','!'));//helloworld!
+
+//字符搜索,区分大小写，没搜索到返回-1
+var str='this is a test';
+console.log(str.indexOf('t'));//0
+console.log(str.indexOf('is'));//2//首次出现
+console.log(str.indexOf('i'));//2
+console.log(str.indexOf('i',3));//5//3是开始搜索位置，搜索到的是第二个i
+
+//通过indexOf（）可以统计一个字符在指定字符串出现的次数
+var str='sjfehugAGSlajdekofjnassjaks46';
+var count=0;
+var pos=str.indexOf('s');
+while(pos!=-1){
+    count++;
+    pos=str.indexOf('s',pos+1);
+};
+console.log(count);//4 //s出现4次
+
+//lastIndexOf()最后一次出现的位置
+var str='this is a test';
+console.log(str.indexOf('is'));//2
+console.log(str.lastIndexOf('is'));//5
+
+//比较两个字符串本地特定排序大小
+console.log('a'.localeCompare('z'));//-1//a小于z
+console.log('z'.localeCompare('a'));//1//z大于a
+console.log('a'.localeCompare('A'));//-1
+console.log('a'.localeCompare('a'));//0//相等返回0
+
+//match（）找到一个或多个正则表达式的结果
+var str='this is a test of king show time';
+var re=/IS/ig;//i代表忽略大小写，g代表全局//['is','is']
+var re=/is/;//["is", index: 2, input: "this is a test of king show time"]
+console.log(str.match(re));
+var str='wneijoABQQGJQLMFKNFKnjhdjcdiibjc';
+console.log(str.match(/[a-f]/ig));// ["e", "A", "B", "F", "F", "d", "c", "d", "b", "c"]//a-f不区分大小写
+
+//search（）根据正则表达式进行搜索
+var str='this is a test';
+console.log(str.search(/is/));//2
+console.log(str.search(/IS/));//-1//没有，返回-1
+console.log(str.search(/IS/i));//2
+
+//.replace();替换
+var str='this is a test';
+var newStr=str.replace(/IS/ig,'!');//用！替换is
+console.log(newStr);//th! ! a test
+
+var str='2015-09-26';
+var newStr=str.replace(/(\d{4})-(\d{2})-(\d{2})/,'$2/$3/$1');
+console.log(newStr);// 09/26/2015
+
+//方法二
+var str='2015-09-25';
+var newStr=str.replace(/(\d{4})-(\d{2})-(\d{2})/,func);//d取4位，取2位
+function func(match,d1,d2,d3){
+	return [d2,d3,d1].join('/');
+}
+console.log(newStr);//09/26/2015
+
+//.slice(start,end)截取字符串,包括第一个
+var str='abcdef';
+console.log(str.slice(2));//cdef 从第2开始截取到末尾
+console.log(str.slice(0,2));//ab 从第0开始截取两位
+console.log(str.slice(-3));//(倒数)def 
+console.log(str.slice(-4,-2));//cd
+console.log(str.slice(0,-1));//abcde
+
+//.substr(start,length)截取
+console.log(str.substr(3));//def
+console.log(str.substr(0,4));//abcd
+
+//String.substring(from,to);
+
+//split()将字符串拆分成数组
+var str='2015-08-12';
+var arr=str.split('-');
+console.log(arr);//['2015','08','12']
+
+var str='a b c d e f';
+var arr=str.split(' ');
+console.log(arr);//["a", "b", "c", "d", "e", "f"]
+
+arr=str.split(' ',2);//拆分成两个
+console.log(arr);//["a", "b"]
+
+//字符串大小写相关；
+console.log('KING'.toLowerCase());//king 小写
+console.log('KING'.toLocaleLowerCase());//king 按照本地方式把字符串转换为小写
+console.log('maizi'.toUpperCase());//MAIZI 大写
+console.log('maizi'.toLocaleUpperCase());//MAIZI
+
+//trim()去掉空格
+var str=' abc ';
+alert('!'+str+'!');//! abc !
+alert('!'+str.trim()+'!');//!abc!
+
+//产生锚点str.anchor();
+var str='this is a test';
+document.body.innerHTML=str.anchor('contents_anchor');//锚点名称
+
+
+//产生链接
+var title='this is of king show time';
+var url='http://phpfamily.org';
+document.write('Click Me to Visit My Blog'+title.link(url));
+
+
+	</script>
+	<!-- <a href="http://phpfamily.org">this is of king show time</a> -->
+</body>
+</html>

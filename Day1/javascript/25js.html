@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+  try{
+  	notExitsts();
+  }catch(e){
+  	alert(e.name+':'+e.message);
+  }
+   alert('this is a test');
+
+   try{
+      var n=0;
+      if(n==0){
+      	throw new Error('0不能当作除数');
+      }else{
+      	alert(4/n);
+      }
+   }catch(e){
+       alert(e.name+':'+e.message)
+   }finally{
+   	  alert('我总是被调用')
+   }
+
+  
+  try{
+     notExitsts();
+  }catch(e){
+   if(e instanceof EvalError){
+    alert(EvalError+ ':' + e.message);
+   }else if(e instanceof RangeError){
+   	alert('RangeError'+':'+e.message);
+   } else {
+   	alert(e.name+':'+e.message);
+   }
+  }
+
+//错误类型：EvaError/InternalError/RangeError/ReferenceError/SyntaxError/TypeError/URIError
+
+function test(x, y) {
+	x = x || 0;
+	y = y || 0;
+	return x + y;
+}
+
+test(4, 5);
+
+function MyError(msg){
+	this.name='自定义错误名字:';
+	this.message=msg || '默认自定义错误信息';
+}
+MyError.prototype=Object.create(Error.prototype);
+MyError.prototype.constructor=MyError;
+try{
+	throw new MyError();
+}catch(e){
+	console.log(e.name+':'+e.message);
+}
+
+
+try{
+     throw new MyError('测试自定义错误信息');
+}catch(e){
+    console.log(e.name+':'+e.message);
+}
+var o1={x:1};
+var o2={x:1};
+console.log(o1==o2);//false
+
+var o3={x:1};
+var o4=o3
+o4.x=123;
+console.log(o4.x);
+console.log(o3.x);//o4=o3=123
+
+function f(o){
+   o.x=55;
+}
+f(o3);
+console.log(o4.x);//55
+console.log(o3==o4);//true 同一个对象
+
+
+
+
+
+	</script>
+</body>
+</html>

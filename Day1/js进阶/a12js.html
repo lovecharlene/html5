@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+String.prototype.reverse=function(){
+	return Array.prototype.reverse.apply(this.split('')).join('');
+}
+console.log('maizi'.reverse());//iziam
+console.log('king'.reverse());
+//gnik
+//检测方法是否存在，不存在则扩展//function//undefined, null, false !true
+ if(!Array.prototype.inArray){//undefined=>false
+   Array.prototype.inArray=function(needle){
+   	for(var i=0,len=this.length;i<len;i++){
+		if(this[i]==needle){
+			return true;
+        }
+     }
+     return false;
+   }
+ };
+ var arr=['a','b','c','d'];
+ console.log(arr.inArray('b'));//true
+ console.log(arr.inArray('c'));//true
+
+function Person(){
+	this.mouth=true;
+}
+
+var p1=new Person();
+var p2=new Person();
+
+Person.prototype.say=function(){
+	return'hello';
+}
+
+console.log(p1.say());//hello
+console.log(p2.say());//hello
+
+console.log(p1.constructor);//ƒ Person(){
+	// this.mouth=true;
+	// }
+console.log(p1.constructor.__proto__.constructor); //ƒ Function() { [native code] }
+console.log(p1.constructor.prototype.constructor);//
+// ƒ Person(){
+// 	this.mouth=true;
+// 	}
+console.log(p1.constructor.prototype.mouth);//undefined//Pperson.prototype.say 只有say 没有mouth
+
+Person.prototype={
+	hair:true,
+	face:true
+};
+
+console.log(typeof p1.hair);//undefined//p1已经实例化，hair属性是后面才添加在prototype上的
+console.log(p1.say());//hello
+console.log(typeof p1.__proto__.say);//function
+console.log(typeof p1.__proto__.hair);//undefined
+
+var p3=new Person();
+console.log(typeof p3.__proto__.say);//undefined
+console.log(typeof p3.__proto__.hair);//boolean
+console.log(typeof p3.__proto__.face);//boolean
+	
+console.log(p3.constructor);//ƒ Object() { [native code] }
+console.log(p1.constructor);//ƒ Person(){
+	// this.mouth=true;
+	// }
+console.log(typeof p3.constructor.prototype.hair);//undefined
+console.log(typeof p1.constructor.prototype.hair);//boolean
+
+Person.prototype={
+	'hair':true,
+	face:true
+};
+Person.prototype.constructor=Person;
+var p4=new Person();
+console.log(p4.constructor);//ƒ Person(){
+	// this.mouth=true;
+	// }
+console.log(typeof p4.constructor.prototype.hair);//boolean 需要重置 构造器属性
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+function foo(){};
+foo.prototype.z=3;
+var obj=new foo();
+obj.x=1;
+obj.y=2;
+console.log(obj.x);
+console.log(obj.y);
+console.log(obj.z);
+console.log(obj.toString());//[object Object]
+//层次关系：obj-foo prototype-object prototype-null（undefined）一层一层往上找
+//obj.z=12;
+// console.log(obj.z);//12
+// delete obj.z;
+// console.log(obj.z);//3
+// delete foo.prototype.z;
+// console.log(obj.z);//undefined
+
+
+//通过in检测对象上是否有某个属性
+console.log('x' in obj);//true
+console.log('z' in obj);//true
+console.log('toString' in obj);//true
+console.log('notExists' in obj);//false
+
+//通过hasOwnProperty检测它本身的属性，而不是继承的属性。
+console.log(obj.hasOwnProperty('x'));//true
+console.log(obj.hasOwnProperty('z'));//false.因为z是继承下来的
+console.log(obj.hasOwnProperty('toString'));//false
+delete foo.prototype.z;
+console.log('z'in obj);//false
+
+
+var obj=Object.create({x:1});
+obj.y=2;
+console.log('x' in obj);//true
+console.log(obj.hasOwnProperty('x'));//false
+
+var obj1=Object.create(null);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	var person={};
+Object.defineProperties(person,{
+	'username':{
+		value:'king',
+		writable:true,
+		enumerable:true,
+		configurable:true
+	},
+	age:{
+		value:12,
+		writable:false
+	}
+})
+console.log(Object.getOwnPropertyDescriptor(person,'username'));
+console.log(Object.getOwnPropertyDescriptor(person,'age'));
+person.addr='北京';//（新添加的addr属性，各项默认值为true）
+console.log(Object.getOwnPropertyDescriptor(person,'addr'));
+
+//检测一个对象是否是另一个对象的原型（().prototype.isPrototypeof()）
+var obj={x:1};
+var obj1=Object.create(obj);
+console.log(obj.isPrototypeOf(obj1));
+console.log(Object.prototype.isPrototypeOf(obj1));
+
+// 字面量创建的对象使用Object.prototype作为原型
+// 通过new创建的函数使用构造函数的prototype属性作为原型
+// 通过object.creat创建的使用第一个参数或null作为原型
+
+
+var obj2={};
+console.log(obj2.toString());//[object Object]
+var arr=new Array();
+console.log(arr.toString);
+console.log(Object.prototype.toString.call(arr));//[object Array]
+
+var d=new Date();
+console.log(Object.prototype.toString.call(d));//[object Date]
+
+function classof(obj){
+	if(obj===null){
+		return'NULL';
+	}
+	if(obj===undefined){
+		return 'Undefined';
+	}
+	return Object.prototype.toString.call(obj).slice(8,-1);
+}
+var x=null;
+x=undefined;//Undefined
+x=123;//Number
+x='king';//String
+x=true;//Boolean
+x=[];//Array
+x=window;//global
+x=function(){};//Function
+
+console.log(classof(x));//NULL
+
+
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type='text/javascript'>
+	'use strict';
+	function function_name (argument) {
+		// body...
+	}
+
+	//实现默认参数的形式
+	function calc(x, y, z, a, b, c, d){
+		var sum = 0;
+		for (var i = 0; i < arguments.length; i++) {
+			if (arguments[i]) {
+				sum	+= arguments[i];
+			} else {
+
+			}
+		};
+		return sum;
+	    // x = x || 0; //if(x==undefined){ x=0; }
+	    // y = y || 0;
+	    // alert(arguments[1]);
+	    // alert('x: ' + x + ', y: ' + y);
+		// return x+y;
+	}//方法一
+	var a = calc(1, 3, 4, 6, 8, 10, 12);
+	alert('a: ' + a);
+	// alert(a > 0 ? 'positive': a < 0 ? 'negative' : 'zero');
+	// if (a > 0) {
+	// 	alert('positive');
+	// } else if(a < 0) {
+	// 	alert('negative');
+	// } else {
+	// 	alert('zero');
+	// }
+ /*  if(x==undefined){
+   	x=0;
+   }
+y= (y===undefined?0:y);
+return x+y;
+}
+alert(calc());
+alert(calc(1,3));方法二*/
+//return arguments;
+// alert(arguments[0]);
+// alert(arguments[1]);
+// x=arguments[0]?arguments[0]:0; //x = x || 0
+// y=arguments[1]?arguments[1]:0;
+// return x+y;
+// }
+// alert(calc());
+// alert(calc(1,2));
+
+
+function test() {//parameters
+	var paramsNum = arguments.length; //5
+	var sum = 0;
+	for(var i = 0; i < paramsNum; ++i){
+      sum += arguments[i];
+	}
+	return sum;
+}
+alert('test: =' + test(1, 2, 56, 34));
+//得到传入参数的个数//可变参数形式的函数
+function test1(){
+	var paramsNum=arguments.length;
+	var max=0;
+	for(var i=0;i<=paramsNum-1;i++){
+		if(arguments[i]>max){
+			max=arguments[i];
+		}
+	}
+	return max;
+}
+alert(test1(123,3432,23456,445643));
+//...
+//变量作用域的
+
+var x = 1;
+function test3(){
+	document.write('函数体内x的值为 '+ x +'<br/>');
+	x = 19;
+	document.write('函数体内对x重新赋值，此时x的值为：'+ x +'<br/>');
+	
+}
+document.write('函数体外x的值：'+ x +'<br/>');
+test3();
+document.write('x的值为：'+x+'<br/>');
+document.write('<hr color="red">');
+
+function test4(){
+	var x=1;
+	alert(x);
+}
+test4();
+//x在函数体内最好用var，不用var则变为全局变量
+
+var x=1,y=2;
+function calc1(x,y){
+	document.write('a的值为'+a+'<br/>');
+	document.write('函数体内x的值为'+x+'<br/>');
+	document.write('函数体内y的值为'+y+'<br/>');
+	var x=0,y=6;
+	var z=x+y;
+	var x=x+y;
+	var a=198;
+	document.write('a的值为: '+a+'<br/>');
+	document.write('x的值为: '+x+'<br/>');
+	return z;
+}
+alert(calc1(x,y));
+alert(x+'-'+y+'-'+z);
+
+
+</script>
+</body>
+</html>

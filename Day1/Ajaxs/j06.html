@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- javascript Dom创建元素
+Dom：文档对象模型
+document对象
+1.创建新的HTML元素
+创建该元素
+找一个已经存在的元素，追加新的元素 -->
+
+<div id='div1'>
+	<p id='p1'>第一段</p>
+	<p id='p2'>第二段</p>
+	<!-- <p>这是新文本</p> -->
+	</div>
+	<script type="text/javascript">
+var param=document.createElement('p');
+var node=document.createTextNode('这是新文本');
+param.appendChild(node);
+
+var ele=document.getElementById('div1');
+ele.appendChild(param);
+
+
+</script>
+	<script>
+// 2.删除已有的HTML元素
+	var ele=document.getElementById('div1');
+	var child=document.getElementById('p1');
+	ele.removeChild(child);
+
+	// var AjaxUtil = {
+	// 	option: {},
+	// 	createRequest: function(){},
+	// 	setOptions: function() {},
+	// 	formatParameters: function() {},
+	// 	readystatechange: function() {},
+	// 	request: function() {}
+
+	// }
+	// var xhr = AjaxUtil.createRequest();
+	</script>
+</body>
+</html>

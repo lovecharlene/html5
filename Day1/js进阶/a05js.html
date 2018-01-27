@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//Object.keys()得到属性名的数组
+var arr=['a','b','c'];
+console.log(Object.keys(arr));//0 1 2
+var obj={
+	0:'d',
+	1:'e',
+	2:'f'
+}
+console.log(Object.keys(obj));//0 1 2
+var obj1=Object.create({},{
+	getFoo:{
+		value:function(){
+			return this.foo;
+		},
+		//enumerable: true ///!!!!!!!
+	}
+});
+obj1.foo=123;
+console.log(Object.keys(obj1));//foo
+//如果想获取对象的所有属性，包括不可枚举的 用object.getOwnPropertyNames
+console.log(Object.getOwnPropertyNames(arr));//["0", "1", "2", "length"]
+console.log(Object.getOwnPropertyNames(obj));//["0", "1", "2"]
+console.log(Object.getOwnPropertyNames(obj1));//["getFoo", "foo"] //!!!!!
+
+//Object.getOwnPropertyDescriptor(a ,'b')得到自身的属性的描述
+var obj={get foo(){return 123;}};
+console.log(Object.getOwnPropertyDescriptor(obj,'foo'));//得到foo的属性的描述 configurable:true
+// enumerable:true get:ƒ foo() set:undefined __proto__:Object
+
+obj={
+	name:'king',
+	age:12,
+};
+console.log(Object.getOwnPropertyDescriptor(obj,'name'));//{value: "king", writable: true, enumerable: true, configurable: true}
+
+obj={};
+Object.defineProperty(obj,'test',{
+  value:'this is a test',
+  writable:false,
+  enumerable:false,
+  configurable:true
+});
+console.log(Object.getOwnPropertyDescriptor(obj,'test'));//{value: "this is a test", writable: false, enumerable: false, configurable: true}
+
+var obj1={x:1}
+var obj2=Object.create(obj1);
+console.log(Object.getOwnPropertyDescriptor(obj2,'x'));//undefined  只能查找原型上的属性 x的原型不是obj2
+
+//Object.getPrototypeOf()得到原型
+console.log(Object.getPrototypeOf(obj2));//Object{x:1} 刚好是obj1
+console.log(Object.getPrototypeOf(obj2)===obj1);//true
+
+//constructor指向创建了该对象原型的函数引用（数组原型）
+var obj3=new Object;
+console.log(obj3.constructor==Object)
+;//true
+var arr1=new Array;
+console.log(arr1.constructor==Array);
+//true
+var n=new Number(324);
+console.log(n.constructor===Number);//true
+function Test(){
+
+}
+var f=new Test();
+console.log(f.constructor);//function Test()
+
+//.toString()返回一个代表该对象的字符串
+console.log(f.toString());//[object Object]//第一个是类型，第二个是原型
+var toString=Object.prototype.toString;
+console.log(toString.call(new Date));//[object Date]
+console.log(toString.call(Math));//[object Math]
+console.log(toString.call(new String));//[object String]
+console.log(toString.call(undefined));//[object Undefined]
+console.log(toString.call(null));//[object Null]
+
+ var obj={x:1};
+ console.log(obj.valueOf());//Object:{x:1}
+
+
+
+
+
+	</script>
+</body>
+</html>

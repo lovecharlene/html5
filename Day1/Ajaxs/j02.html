@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type='text/javascript'>
+// ajax运行环境
+// 1.ajax核心
+// XMLHttpRequest对象
+
+// ActiveXObject
+
+// 2运行环境
+// （服务器软件）xampp（LAMP）
+
+// 2.1环境搭建
+
+// 2.2准备测试文件
+
+function ajaxFunction(the_request_url){
+	var xmlHttp;
+	try{
+		xmlHttp=new XMLHttpRequest();
+	}
+	catch(e){
+		try{
+			xmlHttp=new ActiveXObject('Msxml2.XMLHTTP');
+		}
+		catch(e){
+			try{
+				xmlHttp=new ActiveXObject('Microsoft.XMLHTTP')
+			}
+			catch(e){
+              alert('您的浏览器不支持ajax');
+               return false;
+
+			}
+		}
+	}
+	if(xmlHttp){
+       xmlHttp.open('GET', the_request_url, true);
+       xmlHttp.onreadystatechange=function(){
+       	if(xmlHttp.readyState==4){
+            if(xmlHttp.status==200){
+               document.getElementById('vv').innerHTML=xmlHttp.responseText;
+            }
+       	}
+       };
+       xmlHttp.send(null);
+	}else{
+		alert('error');
+	}
+}
+
+	</script>
+	<input type='button' id='test' value='test' onclick="javascript:ajaxFunction('data/ajax-03.txt')">
+	<br/><br/>
+	<div id='vv'>test ajax</div>
+</body>
+</html>

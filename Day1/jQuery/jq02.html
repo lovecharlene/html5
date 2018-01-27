@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<!-- <div class='test'>test</div>
+
+<div class='list'>
+    <div class='test' id='first'>1</div>
+    <div class='even'>2</div>
+    <div>3</div>
+    <div class='even'>4</div>
+    <div>5</div>
+</div> -->
+
+	<ul>
+		<li>0</li>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+	</ul>
+	<li>Test</li>
+	<button>Click me</button>
+	<script src='./js/jquery-3.2.1.js'></script>
+	<script type="text/javascript">
+
+//选择器 jQuery Selectors
+// 1.Basics
+// $('#myid')
+// $('.myclass')
+// $('*')all
+// $('code,#myid,myclass')且
+
+// 2.Hierarchy
+// $('div .code')div下的code（div的子元素）
+// $('li>ul')li的直接子元素
+// $('strong+em')姐妹选择器，紧跟其后的同级元素
+// $('strong~em')所有同级元素
+
+// 3.Basic Filters
+// $('li:first')第一个li
+// $('li:last')
+// $('li:not(li:first)')非
+// $('li:even')偶数index
+// $('li:odd')基数
+// $('li:eq(1)')等于1
+// $('li:gt(2)')greet大于2的
+// $('li:lt(2)')less小于2
+// $(':header')标题
+// $(':animated')动画
+	</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('button').on('click', function(){
+			// $('div').css('backgroundColor','yellow');
+			// $('#test').css('backgroundColor','yellow');
+			// $('.test').css('backgroundColor','red');
+			// $('.test,#test,h1').css('backgroundColor','red');
+		// $('div .test').css('backgroundColor','blue');
+		// $('.list >.test').css('backgroundColor','blue');	
+		// $('#first +div').css('backgroundColor','blue');
+		// $('li:first').css('backgroundColor','blue');
+		// $('li:not(ul li)').css('backgroundColor','blue');
+		// $('li:even').css('backgroundColor','blue');
+		$('li:gt(4)').css('backgroundColor','blue');
+		});
+	});
+</script>
+</body>
+</html>

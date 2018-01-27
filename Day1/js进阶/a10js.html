@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+function Product(name){
+      this.name=name;
+}
+// var obj = {
+// 	name: '音响'
+// }
+// obj.name = '相机'
+Product.prototype.name='音响';
+var p1=new Product('相机');
+console.log(p1.name);//相机//自身属性优先于原型属性
+delete p1.name;
+console.log(p1.name);//音响
+p1.name='手机';
+console.log(p1.name);//手机
+
+var obj={
+	username:'king',
+	age:12,
+	addr:'北京',
+	email:'382771946@qq.com'
+};
+for(var i in obj){
+	console.log(obj[i]);//king 12 北京 382771946@qq.com
+}
+
+
+function Product(name,color){
+      this.name=name;
+      this.color=color;
+      this.someMethod=function(){
+      	return'this is a test';
+      }
+}
+Product.prototype.price=1234;
+Product.prototype.memory=32;
+var p1=new Product('苹果手机','白色');
+for(var p in p1){
+   console.log(p);//name color someMethod price memory 
+}
+
+for(var p in p1){
+	if(p1.hasOwnProperty(p)){
+      console.log(p);//name color someMethod 
+	}
+}
+
+
+var monkey={
+	hair:true,
+	feeds:'香蕉',
+	breathes:'air',
+};
+function Human(name){
+	this.name=name;
+}
+Human.prototype=monkey;
+var person1=new Human('king');
+console.log(person1.name);//king
+console.log(monkey.isPrototypeOf(person1));//true
+
+var person2=new Human('queen');
+person2.feeds='火锅';
+person2.learn='Js课程';
+console.log(person2.learn);//Js课程
+console.log(person2.feeds);//火锅
+console.log(person2.name);//queen//自身没有，找原型
+console.log(person2.breathes);//air
+person2.constructor='this is a test';
+
+console.log(person2.__proto__);//Object breathes: "air" feeds: "香蕉"
+// hair: true test: "hello maizi"
+// __proto__: Object
+
+console.log(person2.constructor);//this is a test
+
+monkey.test='hello maizi';
+console.log(person2.test);//hello maizi
+console.log(typeof person2.__proto__);//object
+console.log(typeof person2.prototype);//undefined
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

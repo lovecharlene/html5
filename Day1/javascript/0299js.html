@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=10" />
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	<input type='button' value='test' id='btn'>
+	<a href='http://taobao.com' id='taobao'>淘宝</a>
+	<script type="text/javascript">
+		var btn=document.getElementById('btn');
+		
+		 btn.onclick=function(e){
+		alert(window.event.srcElement===this);//true
+	}
+	btn.attachEvent('onclick',function(e){
+        alert(event.srcElement===this);//true
+	});
+
+var taobao=document.getElementById('taobao');
+taobao.onclick=function(){
+	window.onclick.returnValue=false;//取消默认行为
+}
+
+
+var box1=document.getElementById('box1');
+var btn1=document.getElementById('bbtn1');
+ box1.onclick=function(){
+ alert('button click');
+ window.event.cancelBubble;//取消冒泡
+ }
+document.body.onclick=function(){
+	alert('body clicked');
+}
+
+
+
+	// 事件兼容：
+	// 事件绑定addEventListener/attachEvent
+	// 事件移除：removeEventListener/detachEvent
+	// 获取事件对象：e.target/window.event.srcElement
+	// 阻止冒泡：e.stopPropagation/window.event.cancelBubble
+	// 阻止默认：e.preventDefalt/window.event.returnValue
+
+	</script>
+</body>
+</html>

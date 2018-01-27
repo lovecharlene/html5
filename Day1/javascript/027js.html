@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id='box1' style='background:#ABCDEF; width:300px; height:300px;'>
+<input type='button' value='test2' id='btn2' />
+</div>
+<script type="text/javascript">
+
+	var btn2=document.getElementById('btn2');
+	var box1=document.getElementById('box1');
+	btn2.onclick=function(e){
+		alert('button clicked');
+		//取消冒泡 e.stopPropagation();
+		var e=e||window.event;
+		e.stopPropagation();
+		alert(e.cancelBubble);//IE浏览器e.cancleBubble=true
+	}
+
+
+	box1.onclick=function(e){
+		alert('div clicked');
+	}
+
+	document.body.onclick=function(){
+		alert('body clicked');
+	}
+	document.documentElement.onclick=function(){
+		alert('html clicked');
+	}
+	document.onclick=function(){
+		alert('document clicked');
+	}
+	//冒泡顺序：botton-div-body-html-document
+</script>
+</body>
+</html>

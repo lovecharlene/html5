@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	 var obj={};
+	 console.log(Object.keys(obj));
+	// 	obj.x=1;
+	// 	obj.y=2;
+	// 	obj.x=123;
+	// 	obj.y=4566;
+	// 	console.log(obj.x+'\n'+obj.y);
+	// 	for(var p in obj){
+	// 		console.log(p);
+	// 	}
+	// 	//x y
+	// 	console.log(Object.keys(obj));//x y
+
+ //        console.log(Object.getOwnPropertyNames(obj));//x y
+
+        //定义属性
+     Object.defineProperty(obj,'x',{
+     	value:12
+     });
+     console.log(obj.x);
+     obj.x=456;
+     console.log(obj.x);//12,结果未更改
+     console.log(obj.x);
+    for(p in obj){
+    	console.log('对象中的属性：'+p+'\n');
+    }
+     //console.log(Object.keys(obj));报错
+
+//configureable默认值为false；enumerable默认为false；value默认值为undefined；writable默认值为false
+
+Object.defineProperty(obj,'y',{
+	value:56,
+	writable:true,//代表是否可写。可改
+	enumerable:false,//是否可枚举
+	configurable:false//是否可配置
+});
+console.log(obj.y);//56
+obj.y=777
+console.log(obj.y);//777可改
+for(p in obj){
+	console.log(p);
+}
+//空集，不运行，不可枚举
+
+Object.defineProperty(obj,'z',{
+    value:'this is a test',
+    writable:true,
+    enumerable:true,
+    configurable:false
+});
+   console.log(obj.z);
+   obj.z='hello';
+   console.log(obj.z);
+   delete obj.z;
+   console.log(obj.z);//hello,没有删除成功，因为configurable值是false不可配置、
+
+Object.defineProperty(obj,'k',{
+    value:1,
+    writable:false,
+    enumerable:false,
+    configurable:true
+});
+   console.log(obj.k);//1
+   obj.k=3;
+   console.log(obj.k);//1,因为writable是false，赋值改不了
+
+
+Object.defineProperty(obj,'k',{
+   writable:true,
+});
+   obj.k=5;
+   console.log(obj.k);//5,可以重新改writable为true，因为configurable为true，configurable如果是false则不能改writable的属性。
+
+console.log(obj.propertyIsEnumerable('k'));
+
+Object.defineProperty(obj,'xx',{
+	get:function(){
+		return 123;
+	}
+})
+console.log(obj.xx);//123
+
+
+    // writable:控制赋值,
+    // enumerable:控制枚举,
+    // configurable:控制delete,和其他属性。
+	
+	</script>
+</body>
+</html>

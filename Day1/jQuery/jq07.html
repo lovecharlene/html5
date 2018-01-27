@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<div>--click event handler
+<button></button>
+</div>
+<body>
+	<div><h3>Click</h3></div>
+	<button id='btn1'>Single click</button>
+	<button id='btn2'>Double click</button>
+
+	<div><h3>Focus/Blur</h3></div>
+	<input type='text' id='ip1'/>
+	<div id='result1'>R1</div>
+
+	<div><h3>Mouse</h3></div>
+	<button id='btn3'>Mouse</button>
+	<div id='result2'>R2</div>
+
+    <div><h3>Key</h3></div>
+    <input type='text' id='ip3'/>
+	<div id='result3'>R3</div>
+
+ 	<div><h3>Change</h3></div>
+    <input type='text' id='ip4' value='test'/>
+	<div id='result4'>R4</div>
+
+	<div><h3>Submit</h3></div>
+    <form id='form1' >
+	<input type='submit' id='ip5'>
+	</form>
+
+<script src='./js/jquery-3.2.1.js'></script>
+	<script type="text/javascript">
+	// Jquery Event Handlers
+// ready():document.onload
+
+// blur():leave
+
+// focus():enter
+
+// click():单击
+
+// dblclick():双击
+
+// mousedown():按下pressed down
+
+// mouseup():释放
+
+// mouseover():驶近
+
+// mouseout():驶离
+
+
+// keydown():
+
+// keypress():
+
+// keyup():
+
+// change():
+
+// submit():
+
+// JQuery Event Object Properties.
+// event.altKey:
+
+// event.ctrlKey:
+
+// event.data:
+
+// event.KeyCode:
+
+// event.pageX:
+
+// event.pageY:
+
+// event.screenX:鼠标点击位置
+
+// event.screenY:
+
+// event.shiftKey:
+
+// event.target:点击元素
+
+// event.timeStamp:什么时候触发的
+
+// event.type:
+
+$(document).ready(function(){
+    $('#btn1').on('click',function(){
+    	debugger;
+	alert('click');
+});
+     $('#btn2').on('dblclick',function(){
+	alert('dblclick');
+});
+
+// $('#btn1').off('click');//关掉on事件
+// $('#btn1').triggle('click');//触发事件
+
+$('#ip1').on('focus',function(){
+	$('#result1').html('focused');
+});
+$('#ip1').on('blur',function(){
+	$('#result1').html('blured');
+});
+
+$('#btn3').on('mousedown',function(){
+	$('#result2').append('<br/>mousedown');
+});
+$('#btn3').on('mouseup',function(){
+	$('#result2').append('<br/>mouseup');
+});
+
+$('#btn3').on('click',function(){
+	$('#result2').append('<br/>click');
+});
+
+$('#btn3').on('mouseover',function(){
+	$('#result2').html('<br/>mouseover');
+});
+$('#btn3').on('mouseout',function(){
+	$('#result2').html('<br/>mouseout');
+});
+$('#ip3').on('keydown',function(){
+	$('#result3').append('<br/>keydown');
+});
+$('#ip3').on('keyup',function(){
+	$('#result3').append('<br/>keyup');
+});
+$('#ip3').on('keypress',function(){
+	$('#result3').append('<br/>keypress');
+});
+$('#ip4').on('change',function(){
+	$('#result4').append('<br/>changed');
+});
+$('#form1').on('submit',function(){
+	alert('submit!');
+})
+});
+	</script>
+</body>
+</html>

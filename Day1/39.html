@@ -3,7 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<link rel="stylesheet" href="39.css">
+
 	<style>
+	
 	header{
 		background: white;
 		padding:40px 0px;
@@ -15,10 +18,10 @@
         margin:0 auto;
   	}
     header h1{
-    	font:45px/56px "微软雅黑" san-serif;
+    	font:45px/56px "微软雅黑", "sans-serif";
     }
     header h4{
-    	font:19px/20px "宋体"serif;
+    	font:19px/20px "宋体", "serif";
     	color:#999999;
     }
 	body,ul{border:0px;
@@ -38,6 +41,7 @@
 	}
     nav li{
     	float:left;
+    	position:relative;
     }
     nav a{
 	    padding: 0 20px;
@@ -50,6 +54,12 @@
     	background: #3f3f3f;
     	display:block;
     }
+    nav img{
+    	position: absolute;
+    	top:0;
+    	right:-20px;
+    }
+    
 	#main{
 		width: 1000px;
 		height: 1350px;
@@ -65,8 +75,6 @@
 		width:550px;
 		min-height: 400px;
 		float:left;
-
-
 	}
 	#rside{
 		width:300px;
@@ -81,7 +89,7 @@
 	aside:first-child,article:first-child{
 		margin-top: 20px;
 	}
-	aside last-child{
+	aside:last-child{
 		margin-bottom: 10px;
 	}
 	ul li{
@@ -119,13 +127,23 @@
 		margin-bottom:0;
 	}
 	article h2{
-		font:30/36px;"微软雅黑"，"黑体"
+		font:30/36px "微软雅黑"，"黑体"
 	}
 	article a,article:visited{
 		color:#le73be;
 	}
 	article a:hover{
     color:black;
+	}
+	.catlink::before{
+		font-family:"FontAwesome";
+		content:"\f07b";
+		padding:0px 4px;
+	}
+	.comment::before{
+		font-family:"FontAwesome";
+		content:"\f075";
+		padding:0 4px;
 	}
 	.entry_header,.entry_header a{
 		color:#666666;
@@ -136,16 +154,16 @@
 	}
 	.entry_cotent{
         color:#3a3a3a;
-		font:15px/22px,"新宋体","宋体""serif";
+		font:15px/22px, "新宋体", "宋体", "serif";
 		margin-top: 30px;
 	}
 	#pagebar{
 		color:#3a3a3a;
-		font:17px/22px "微软雅黑"，"黑体";sans-serif
-		magin:20px 0px;
+		font:17px/22px "微软雅黑"，"黑体", "sans-serif";
+		margin:20px 0px;
 	}
-	#papebar a,#pagebar a visited{
-   color:#le73be;
+	#papebar a,#pagebar a:visited{
+   		color:#le73be;
 	}
 	#pagebar a:hover{
 		color:black;
@@ -161,6 +179,7 @@
 
 	}
 	</style>
+
 </head>
 <body>
 	<header>
@@ -171,7 +190,10 @@
     <ul>
     	<li><a href="">导航1</a></li>
     	<li><a href="">导航2</a></li>
-    	<li><a href="">导航3</a></li>
+    	<li>
+    	<img src="hjc.png" alt="">
+    	<a href="">导航3</a>
+    	</li>
     	<li><a href="">导航4</a></li>
     </ul>
     </nav>
@@ -184,8 +206,8 @@
 				<time>2015/7/1</time>
 				by
 				<a href="#"></a>
-				<a class="catlink"href="#">闲谈随笔</a>
-				<a class=""href="#">8条评论</a>
+				<a class="catlink" href="#">闲谈随笔</a>
+				<a class="comment" href="#">8条评论</a>
 				</div>
 				  <div id="entry_conment">
 				  	<p>
@@ -206,8 +228,8 @@
 				<time>2015/7/1</time>
 				by
 				<a href="#"></a>
-				<a class="catlink"href="#">闲谈随笔</a>
-				<a class=""href="#">8条评论</a>
+				<a class="catlink" href="#">闲谈随笔</a>
+				<a class="comment" href="#">8条评论</a>
 				</div>
 				  <div id="entry_conment">
 				  	<p>
@@ -228,8 +250,8 @@
 				<time>2015/7/1</time>
 				by
 				<a href="#"></a>
-				<a class="catlink"href="#">闲谈随笔</a>
-				<a class=""href="#">8条评论</a>
+				<a class="catlink" href="#">闲谈随笔</a>
+				<a class="comment" href="#">8条评论</a>
 				</div>
 				  <div id="entry_conment">
 				  	<p>
@@ -257,7 +279,7 @@
 	    <div id="rside">
 		    <aside>
 		    	<form action="">
-		    	<input type="text"name="search">	    		
+		    	<input type="text" name="search" placeholder="Search...">	    		
 		    	</form>
 		    </aside>
 			<aside>

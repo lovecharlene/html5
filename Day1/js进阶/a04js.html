@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	//通过Object.isExtensible()来检测对象是否可扩展
+var obj={};
+console.log(Object.isExtensible(obj));//true
+var d=new Date();
+console.log(Object.isExtensible(d));//true
+obj.x=1;
+console.log(obj.x);//1
+
+//通过.preventExtensions(obj)将对象变为不可扩展的;且不能再回复可扩展
+obj1=Object.preventExtensions(obj);
+console.log(obj===obj1);//true
+console.log(Object.isExtensible(obj1));//false
+obj1.y=2;
+console.log(obj1.y);//undefined
+// Object.defineProperty(obj1,'z',{value:1});//会报错，不能给不可扩展的赋值
+
+
+//seal()封闭函数
+//Object.isSealed()检测对象是否封闭
+
+var obj={
+	x:1,
+	y:2,//configurable;
+	username:'king'
+};
+obj.age=12;
+delete obj.x;
+var o=Object.seal(obj);
+console.log(obj===o);//true
+console.log(Object.isExtensible(o));//false
+obj.y=55;
+console.log('isSealed: ' + Object.isSealed(obj));
+console.log(obj.y);//55
+console.log(obj);
+//不能执行,不能添加
+// Object.defineProperty(obj,'username', {
+// 	get:function(){
+// 		return 'this is a test';
+// 	}
+// });
+o.z=77;//writable NO!!
+console.log(o.z);//undefined 添加不成功
+console.log(o.username);//king
+delete o.username;
+console.log(o.username);//king 删除不成功
+//会报错 Object.defineProperties(obj,'usename',{value:'queen'});
+console.log(Object.isSealed(o));//true
+console.log(o.username);//king
+console.log(Object.getOwnPropertyDescriptor(obj,'username'));//{value: "king", writable: true, enumerable: true, configurable: false}
+
+Object.freeze() //冻结
+// 检测Object.isFrozen()是否被冻结
+var obj={
+	prop:function(){},
+	foo:'king'
+};
+obj.test='this is a test';
+delete obj.prop;
+var o=Object.freeze(obj);
+console.log(obj===o);//true
+console.log(Object.isFrozen(o));//true
+//冻结之后任何操作无效
+o.x=1;
+console.log(o.x);//undefined
+console.log(o.foo);
+o.foo='queen';
+console.log(o.foo);//king 修改失败
+
+var obj1={
+	internal:{
+
+	}
+};
+Object.freeze(obj1);
+obj1.internal.x=1;
+console.log(obj1.internal.x);//1 浅冻结
+
+function deepFreeze(obj){
+    var prop,propKey;
+    Object.freeze(obj);
+    for(propKey in obj){
+     prop=obj[propKey];
+     if(!obj.hasOwnProperty(propKey)||!(typeof prop==='object')||Object.isFrozen(prop)){
+     	continue;
+     }
+     deepFreeze(prop);//迭代
+    }
+}
+var obj2={
+	internal:{}
+};
+deepFreeze(obj2);
+obj2.internal.x=1;
+console.log(obj2.internal.x);//undefined 都被冻结了
+
+
+
+// 默认对象是可扩展的，也是非冻结的
+// 可扩展的一定是非冻结的 if obj.isExtensible //true isFrozen(obj) false
+// 不可扩展的一定是冻结的
+
+console.log(Object.isFrozen({}));//false
+var obj=Object.preventExtensions({});
+console.log(Object.isFrozen(obj));//true
+
+//一个非空对象默认也是非冻结
+var obj1={x:1};
+console.log(Object.isFrozen(obj1));//false
+Object.preventExtensions(obj1);
+console.log(Object.isFrozen(obj1));
+//false//不可扩展，不是冻结
+delete obj1.x;
+console.log(Object.isFrozen(obj1));//true
+
+//一个不可扩展的对象，但是拥有一个可写但不配置的属性，仍然是非冻结的。
+var obj2={x:1};
+Object.preventExtensions(obj2);
+Object.defineProperty(obj2,'x',{writable:false})//不可写
+console.log(Object.isFrozen(obj2));//false
+
+//将x变为不可配置
+Object.defineProperty(obj2,'x',{configurable:false});
+console.log(Object.isFrozen(obj2));//true
+
+//不可扩展的对象，有不可配置但可写的属性，它也是非冻结的。
+var obj3={x:1};
+Object.preventExtensions(obj3);
+Object.defineProperty(obj3,'x',{configurable:false});
+console.log(Object.isFrozen(obj3
+	));//false
+//将x变为不可写
+Object.defineProperty(obj3,'x',{writable:false});
+console.log(Object.isFrozen(obj2));//true
+
+//如果一个不可扩展的对象拥有一个访问器属性，它也是非冻结的
+var obj4={
+	get test(){
+		return 1;
+	}
+};
+Object.preventExtensions(obj4); //?????
+console.log(Object.isFrozen(obj4));//false
+Object.defineProperty(obj4,'test',{configurable:false});
+console.log(Object.isFrozen(obj4));//true//
+
+var obj5={x:1};
+Object.freeze(obj5);
+console.log(Object.isFrozen(obj5));//true
+console.log(Object.isSealed(obj5));//true
+console.log(Object.isExtensible(obj5));//false
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

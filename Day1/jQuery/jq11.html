@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="./css/11.css">
+	<meta charset="UTF-8">
+	<title>Jquery UI</title>
+</head>
+<body>
+<ul class='sort'>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+<li>5</li>
+<li>6</li>
+	</ul>
+<div class='block'></div>
+<div class='drop'></div>
+
+	<div id='accordion'>
+		<h3>Section 1</h3>
+		<div>
+		<p>
+		jiwdieofejfpevmemcs,xl,x;sxeijfenfenflevnnlncl
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<
+		</p>
+		</div>
+
+		<h3>Section 2</h3>
+		<div>
+		<p>
+		jiwdieofejfpevmemcs,xl,x;sxeijfenfenflevnnlncl
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<
+		</p>
+		</div>
+
+		<h3>Section 3</h3>
+		<div>
+		<p>
+		jiwdieofejfpevmemcs,xl,x;sxeijfenfenflevnnlncl
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<
+		</p>
+		</div>
+
+		<h3>Section 4</h3>
+		<div>
+		<p>
+		jiwdieofejfpevmemcs,xl,x;sxeijfenfenflevnnlncl
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<jiwdieofejfpevmemcs,xl,x;sx
+		xlocmw;,c;<
+		</p>
+		</div>
+	</div>
+
+	<div id='dialog' title='mai dialog'>
+	<p>jiehfiwjohfoewjf</p>	
+	</div>
+
+	<div id='slider'></div>
+
+<script src='./js/jquery-3.2.1.js'></script>
+<script src='./js/jquery-ui.min.js'></script>
+	<script type="text/javascript">
+// 1.draggable:拖拽
+// 2.droppable:放置
+
+// 3.sortable:排序
+// 4.rsizeable:改变大小
+// 5.accordion:折叠菜单
+// 6.dialog:对话框
+// 7.slider:滑动条
+// 8.tablesorter:表格排序
+// (options,methods,events)
+
+$(document).ready(function(){
+ 		// $('.block').draggable();
+ 		$('.block').draggable({helper:'clone',opacity:0.5});
+ 		$('.drop').droppable({
+ 			accept:'block',
+ 			activeClass:'droppable-active',
+ 			hoverClass:'droppable-hover',
+ 			drop:function(ev,ui){
+ 				$(this).append('<br/>Dropped!');//出现单词dropped！
+ 			}
+ 		});
+ 		$('.sort').sortable({axis:'y'});//可传参//在y轴可拖动
+ 		$('.block').selectable();
+ 		$('.block').resizebale();
+ 		$('#accordion').accordion({collapsible:true, active:0, header:'h3'});//折叠菜单,默认页面展示是0
+        $('#dialog').dialog();
+        $('#slider').slider({step:25});//4个选择位置
+        $('#slider').on('slidechange',function(event,ui){
+         $('#slider').slider('destroy');
+         $('#myTable').tablesorter();
+        });
+});
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//test();
+	function test(){
+		alert('this is a test');
+	}
+	 test();
+	 //可以在函数申明之前之后调用
+
+	 function test2(){
+	 	return 1;
+	 }
+	 alert(test2());
+	 //return返回值为1，没有添加返回值则为undefined，函数碰到return，结束，看不到接下来的表达式
+
+
+ function calc(num1,num2){
+ 	return num1+num2;
+ }
+    alert(calc(1,2));//3
+    //如果没有传参数，则弹出NaN。
+
+//alert(calc(1,2,3,4,5,6));
+//弹出3，多余的被忽略。
+
+function calc1(num1,num2){
+	num1=num1||1;
+	num2=num2||2;
+	return num1+num2;
+}
+alert(calc1());
+ //如果没有传参数，不能使用默认值，有默认值才能使用默认值，eg ca1c1（3，6）弹出9。
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	//测试编码URI的函数
+	var url='http://www.phpfamily.org/test.php?search= this is a test';
+	var res=encodeURI(url);
+	document.write(res);
+	var res1=decodeURI(res);
+	document.write('<br/>'+res1+'<br/>');
+
+
+	 url='http://www.phpfamily.org/test.php?search= this is a test&sum=1+2&test1=!.()*~';
+	 res=encodeURIComponent(url);
+	 document.write(res+'<br/>');
+	 res1=decodeURIComponent(res);
+	 document.write('<br/>'+res1+'<br/>');
+	 //encode编码 对，/：@&=+$#不进行转译，decode解码  encodeURIComponent不会对—.!~*''()进行编码，对其他进行16进制序列编码替换
+
+	 document.write('<hr color="red"/>');
+	 var str1='你好hello maizi http://maiziedu.com?search=javascript&test=this is a test&test1=-_*?';
+	 result=escape(str1);
+	 document.write(result);
+	 document.write('<br/>');
+	 var result1=unescape(result);
+	 document.write(result1);
+//escape/对字符串进行编码，不能对uri进行编码。unescape进行解码。
+
+
+document.write('<hr/>');
+eval('var i=12;');
+alert(i);
+//eval函数慎用，如果表达式是一个参数，兼执行表达式，如果是javascript语句，将执行语句。可能将字符串当作代码运行。
+
+//Number()函数将对象转换成数字，如果不能转换则返回NaN。
+document.write('<hr color="red"/>');
+var var1 = new Boolean(123);
+document.write(typeof var1); //object
+alert(var1);//true
+var1=false;//0
+document.write('<br/>' + typeof var1);//boolean
+var1='3king';//NaN
+document.write('<br/>' + typeof var1);//string
+var1=34;//34
+document.write('<br/>' + typeof var1);//number
+var1='34'//34
+var1=undefined;//NaN
+document.write('<br/>' + typeof var1);//undefined
+var1=null;//0
+document.write('<br/>' + typeof var1);//object
+var1=NaN;//NaN
+document.write('<br/>' + typeof var1);//number
+var1=new Date();//1970年一月一日到现在的毫秒数
+document.write('<br/>' + typeof var1);
+alert(Number(var1));//true转换为1
+
+
+//Sting（）函数将对象值转换成字符串
+var var2=true;//true
+var2=false;//false
+var2=23;//23
+var2=null;//null
+var2='king';//king
+alert(String(var2));
+
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

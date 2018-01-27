@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+<body>
+<a class="aa" href="#">aa</a>
+	<div class="message">Hello World</div>
+<script type="text/javascript">
+var main = document.body;
+//创建链接
+function createa(url, text)
+{
+    var a = document.createElement('a');
+    var txt = document.createTextNode(text);
+    a.appendChild(txt);
+    a.href=url;
+    a.style.color='red';
+    main.appendChild(a);
+    //<a href="url">text</a>
+}
+// 调用函数创建链接
+createa('http://www.imooc.com', '慕课网'); 
+createa('http://www.baidu.com', '百度'); 
+</script> 
+</body>
+</html>

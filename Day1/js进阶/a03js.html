@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+// scope 作用域
+
+// function f1(){
+// 	var n=1; //局部变量
+
+// 	test=function(){
+//        n+=1;
+// 	}
+
+// 	function f2(){
+// 		alert(n);
+// 	}
+// 	return f2;
+// }
+// var res = f1();//222 
+// alert(res());//function f2(){
+// 			 // alert(n);
+// 			 // }
+// // 			 alert(f1());
+// // alert(res());//1,返回值undefined
+// test();
+// alert(res());//2,返回值undefined
+
+
+// var setValue,getValue;
+// (function(){
+// 	var n=0;
+// 	getValue=function(){
+// 		return n;
+// 	};
+// 	setValue=function(x){
+// 		n=x;
+// 	};
+// })();
+//  alert(getValue());//0
+//  setValue(567);
+//  alert(getValue());//567
+
+// function test(x){
+// 	var i=0;
+// 	return function(){
+// 		return x[i++];
+// 	};
+// }
+// var next=test(['a','b','c','d']);
+// alert(next());//a 第0个
+// // alert(next());//b 第1个
+// // alert(next());//c
+// // alert(next());//d
+
+
+// function f(){
+// 	var a=[];
+// 	var i;
+// 	for(i=0;i<3;i++){
+//        a[i]=function(){
+//        	return i;
+//        };
+// 	}
+// 	return a;
+// }
+// var test=f();
+// alert(test[0]());//3
+// alert(test[1]());//3
+// alert(test[2]());//3
+
+
+// function f(){
+// 	var a=[];
+// 	var i;
+// 	for(i=0;i<3;i++){
+// 		a[i]=(function(x){
+// 			return function(){
+// 				return x;
+// 			}
+// 		})(i);
+// 	}
+//       return a;
+// }
+//    var test=f();
+//    alert(test[0]());
+//    alert(test[1]());
+//    alert(test[2]());
+
+function f(){
+	function test(x){
+    return function(){
+        return x;
+      }
+	}
+ var a=[];
+ var i;
+ for(i=0;i<3;i++){
+    a[i]=test(i);
+ }
+ return a;
+}
+var res=f();
+alert(res[0]());//0
+alert(res[1]());//1
+alert(res[2]());//2
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div date-id='hello'>Hello </div>
+	<div date-id='world'>world</div>
+	<div>maiziedu
+		<span>is awesome</span>
+	</div>
+	<div style='height:50px;width:50px;background-color:red'></div>
+	<button>Click me</button>
+<script src='./js/jquery-3.2.1.js'></script>
+	<script type="text/javascript">
+
+// 	Content Filters
+// $('li:contanins(second-lever)')包含xx内容
+// $(':empty')为空(有无子元素或文本)
+// $('li:has(a)')子元素
+// $('p:parant')不为空
+
+//    Visiblity Filters
+// $('hidden')display：none
+// $('visible')display 
+
+//    Attribute Filters//元素
+// $('li[class]')
+// $('a[rel='self']')
+// $('a[rel!='nofollow']')
+// $('[class^="my"]')以my开头的
+// $('a[class$="my"]')以my结尾
+// $('a[href*="zip"]')包含zip
+// $('a[rel][href][title="blog"]')满足各个条件
+
+$(document).ready(function(){
+	$('button').on('click',function(){
+		// $('div:contains(awesome)').css('backgroundColor','yellow');
+		// $('div:empty').css('backgroundColor','yellow');
+		// $('div:has(span)').css('backgroundColor','yellow');
+		// $('div:hidden').css('display','block');	
+		$('div[date-id^="wo"]').css('backgroundColor','blue');	
+	});
+});
+
+
+
+
+
+
+	</script>
+</body>
+</html>

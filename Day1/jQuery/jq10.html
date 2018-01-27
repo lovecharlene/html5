@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery ajaxs</title>
+</head>
+<body>
+	<script src='./js/jquery-3.2.1.js'></script>
+	<script type="text/javascript">
+
+// 1。$.post(url,[data],[callback],[type])使用post方法来进行异步请求。
+// 跟get的方法类似
+// 只有success时才能调用callback函数
+// type（String）：客户端请求的类型（JSON,XML）等等
+
+// 2。getScript（url，[callback]）通过GET方式请求载入并执行一个javascript文件。
+// url：待投入js文件地址（获取远端文件进行本地执行）
+
+// callback（）成功载入后回调函数
+
+// 3.$ajax事件
+//对象
+// ajaxs({
+// url:
+// data:get/post 如果是post则转变为post body /post object传出去/如果是get则转换成query string
+// type:GET/POST/delay/put
+// datatype:'json/xml'
+
+// function
+// sucess function (json){}:
+// error function(xhr,status,errorThrown):
+// complete function(xhr,status)://无论是否成功，都会调用函数
+// })
+
+// beforeSend:function(xhr,status){
+// },//在发出请求之前会call函数
+// cache:true//false 在变动的api把cahe设成false
+// 希望浏览器cache不变动的request就设成true
+
+$(document).ready(function(){
+	$('button').on('click',function(){
+
+		// $.getScript('test.js',function(data,textStatus){
+		// 	alert(data);
+		//    });
+		
+
+
+	   $ajax({
+	   		url:'/test',
+	   		data:{
+	   			id:123
+	   		},
+	   		type:'POST',
+	   		dataType:'json',
+	   		success:function(){
+	   			debugger;
+	   		},
+	   		error:function(xhr,status,errorThrown){
+	   		},
+	   		complete:function(xhr,status){
+	   			debugger;
+   				}
+   		 });
+
+   	 });
+});
+
+
+
+
+
+
+	</script>
+</body>
+</html>

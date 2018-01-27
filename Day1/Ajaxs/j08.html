@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	id:<input type='text' id='id' name='id'>
+	<br/>
+	user_id:<input type='text'id='userid' name='userid'>
+	user_name:<input type='text' id='username' name='name'>
+	<br/>
+	user_age:
+	<input type='text' id='age' name='age'>
+	<br/>
+	msg:
+	<input type='text' id='msg' name='msg'>
+	<br/>
+	<input type='button' value='findUser' onclick='findUser()'/>
+	<input type='button' value='clickEvent1' onclick='clickEvent1()'/>
+	<input type='button' value='clickEvent2' onclick='clickEvent2()'/>
+	<input type='button' value='clickEvent3' onclick='clickEvent3()'/>
+	<input type='button' value='clickEvent4' onclick='clickEvent4()'/>
+	<script type="text/javascript">
+	function Ajax(type, url, data, success, failed){
+		//创建ajax对象
+		var xhr = null;
+		if(window.XMLHttpRequest) {
+			xhr = new XMLHttpRequest();
+		} else {
+			xhr = new ActiveXOject('Microsoft.XMLHTTP')
+		}
+		var type = type.toUpperCase();
+		//用于清除缓存///
+		var random = Math.random();
+	    if(typeof data=='object'){
+	        var str='';
+			for(var key in data){
+			    str += key + '=' + data[key] + '&';
+			}//method=get&url=///
+			data = str.replace(/&$/, '');
+   		}
+		if(type === 'GET') {
+			if(data){
+				xhr.open(type, url + '?' + data, true);
+		  	} else {
+				xhl.open(type, url + '?' + random, true);
+			}
+			xhr.send();
+		} else if(type === 'POST') {
+		  xhr.open(type, url, true);
+		  // 如果需要像html表单那样POST数据，请使用setRequestHeader()来添加http头。
+		  xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		  xhr.send(data);
+		}
+
+		//处理返回数据//监控
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState===4 && xhr.status===200){
+		        success(xhr.responseXML);
+			}else{
+				if(failed){
+					failed(xhr.status);
+			    }
+		    }
+		}
+	};
+//Ajax中的数据类型
+// ajax请求返回type json，xml，html，text，javascript
+
+// 1.json
+// 名称/值
+// 2.XML
+// 可扩展的标记语言
+// <?xml version='1.0' encoding='UTF-8'?>
+// 	<recipe>
+// 		<name>liyi</name>
+// 	</recipe>	
+// 3.text
+// xxx.txt
+// abcd
+// 4.html
+// 5.javascript
+// eval(javascript)
+
+//处理返回函数
+// xhr.onreadystatechange=function(){
+// 	if(xhr.readyState==4 && xhr.status==200){
+//        success(xhr.responseText);
+// 	}else{
+// 		if(failed){
+//             failed(xhr.status);
+// 		}
+// 	}
+// }
+
+//txt和html格式
+// txt：hello world
+	// html:
+	// <p>
+	// <font color='red'>
+	// hello world
+	// i'm html
+	// </font>
+	// </p>
+	
+function clickEvent1(){
+	var sendData={
+		name:'asher',
+		sex:'male'
+	};
+	Ajax('get','./data/ajax-08-data.txt',sendData,function(data){
+        document.getElementById('msg').value=data
+        console.log(data);
+       },function(error){
+         document.getElementById('msg').value=data;
+          console.log(error);
+       
+	});
+}
+
+
+//json格式
+// json:
+// {'id':11,'name':'liyi','email':'test@qq.com'}
+
+function clickEvent2(){
+	var sendData={
+		name:'asher',
+		sex:'male'
+	};
+	Ajax('get','./data/ajax-08-data.json',sendData,function(data){
+		var user=eval('('+data+')');
+        document.getElementById('msg').value=user.id+user.name;
+        console.log(data);
+       },function(error){
+         document.getElementById('msg').value=data;
+          console.log(error);
+       
+	});
+}
+
+//xml格式
+// xml:
+//success(xhr.responseXML);
+
+function clickEvent3(){
+	var sendData={
+		name:'asher',
+		sex:'male'
+	};
+	Ajax('get','./data/ajax-08-data.xml',sendData, function(data) {
+		var xmlDOM=data;
+		var xmlRoot=xmlDOM.documentElement;
+		try{
+			var xmlItem = xmlRoot.getElementsByTagName('name');
+			alert(xmlItem[0].firstChild.data);
+		}
+		catch(e){
+			alert(e.message);
+		}
+
+        document.getElementById('msg').value=user.id+user.name;
+        console.log(data);
+       },function(error){
+         document.getElementById('msg').value=data;
+          console.log(error);
+       
+	});
+}
+
+//js格式
+// js:document.write(2+3);
+function clickEvent4(){
+	var sendData={
+		name:'asher',
+		sex:'male'
+	};
+	Ajax('get','./data/ajax-08-data.js',sendData,function(data){
+		eval(data);
+       },function(error){
+         document.getElementById('msg').value=data;
+          console.log(error);
+       
+	});
+}
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+//数组的形式：eg
+var arr=[];//空数组
+var arr1=[1,2,3,4];
+var arr2=[1,2,3,true,false,null,undefined,[1,2,3],{x:1,y:2}];
+var x=1;
+var arr3=[x,x*3,x+2,x+3];
+console.log(arr3);
+
+//求数组的元素个数
+//通过构造函数Array（）创建数组
+var a=new Array();//空数组
+var a=new Array(5);
+console.log(a.length);//0
+var a=new Array(1,2,'king',false,2.3,null);
+console.log(a);//6
+
+//替换，增加一个元素：
+var arr=[1,2,3,4];
+console.log(arr[0]);//1,第0个，数组从零开始数
+console.log(arr[3]);//4
+arr[0]='king';
+console.log(arr);//['king',2,3,4]
+arr[5]='hello maizi';
+console.log(arr);//增加一个 length:6
+var x=2;
+console.log(arr[x]);//3
+arr[arr[x]]=333;
+console.log(arr);//['king'2,3,333,undefined,'hello maizi']
+
+var obj={};
+obj[0]='a';
+obj[1]='b';
+console.log(obj);//{0:'a',1:'b'}
+var arr=[];
+arr[0]='a';
+arr[1]='b';
+console.log(arr.length);//2
+arr[-123]='c';
+console.log(arr.length);//2,负数不能算length ['a','b',-123:'c']
+//eg：2.3也不能算length，此外，arr[null]='e'，false='f',undefined='g'也不能算，非负整数才能算length
+
+var arr=new Array(10);
+arr=[];
+arr[100]='abc';
+console.log(arr.length);//101
+
+var arr=[1,2,3,4,5,6,7,8];
+arr.length=3;
+console.log(arr);//[1,2,3]
+arr.length=0;
+console.log(arr);//[]
+arr.length=5;
+console.log(arr);//[],length:5
+
+//更改数组的属性
+var arr=[1,2,3];
+Object.defineProperty(arr,'length',{
+	writable:false
+});
+ console.log(arr.length);
+ arr.length=10;
+ console.log(arr.length);//3
+
+//push在末尾增加多个元素
+ var arr=[];
+ arr[0]='a';
+ arr[1]='b';
+ arr.push('c','d');
+ console.log(arr);//['a','b','c','d']
+
+var res=arr.pop();//'d'，pop弹出末尾的元素
+console.log(res);
+console.log(arr);//['a','b','c']
+
+//unshift在首部添加元素，
+arr.unshift(1,2,3,4,5);
+console.log(arr);//[1,2,3,4,5,'a','b','c']
+res=arr.shift();//弹出首个元素
+console.log(res);//1
+
+//delete删除元素
+var arr=['a','b','c','d'];
+delete arr[0];
+console.log(arr);[undefined,'b','c','d'];
+console.log(arr.length);//4长度不变
+
+
+//for循环遍历下标连续的数组
+var arr=['a','b','c','d','e'];
+for(var i=0, len=arr.length; i<len;i++){
+	console.log(arr[i]);
+	}
+//a b c d e
+
+
+//for in遍历数组
+	var arr1=[];
+	arr1[12]='x';
+	arr1[23]='y';
+	arr1[55]='z';
+for(var i in arr1){//for(key in array)
+	console.log(arr1[i]);
+}
+//x y z 
+//for in可以遍历继承下来的属性
+
+
+//只遍历自身的属性
+for(var i in arr1){
+	if(arr.hasOwnProperty(i)){
+		console.log(arr1[i]);
+	}
+}
+// x y z 
+
+//通过forEach遍历数组
+var arr2=[1,2,3,4,5,6];
+arr2.forEach(function(x){
+	console.log(x);
+});
+//1  2  3  4  5  6 
+
+function Test(element, index, array){
+	console.log('要处理的数组: '+array);
+	console.log('索引：'+index+'--值为：'+element);
+}
+  arr2.forEach(Test);
+//arr[0]
+// 要处理的数组: 1,2,3,4,5,6
+// 索引：0--值为：1
+// 索引：1--值为：2
+// 索引：2--值为：3
+// 索引：3--值为：4
+// 索引：4--值为：5
+// 索引：5--值为：6
+
+//数组中常用的方法：
+//连接 join
+var arr=['a','b','c','d'];
+var res=arr.join('');
+console.log(res);//abcd
+
+//reverse 反转 倒序
+res=arr.reverse();
+console.log(res);//'d''c''b''a'
+
+//sort按照unicode来排序
+var arr=['a','b','c','A','B','C'];
+ res=arr.sort();
+console.log(res);//['A','B','C','a','b','c'];
+var arr=[1,2,11,20];
+ res=arr.sort();
+console.log(res);//[1,11,2,20]
+
+//按数字大小排序
+var arr=[2,1,11,20,3,15];
+
+arr.sort(function(a,b){//从小到大arr=[1,2,3,11,15,20]
+	console.log('a-b='+(a-b));
+	return a-b;
+});
+arr.sort(function(a,b){
+     return b-a;
+});
+console.log(arr);//[20,15,11,3,2,1]从大到小
+
+
+//按数组的属性排序
+var users=[
+{name:'king',age:12},
+{name:'queen',age:32},
+{name:'zhangsan',age:54},
+{name:'rose',age:66},
+];
+users.sort(function(a,b){
+  if(a.name>b.name)return 1;
+  if(a.name<b.name)return -1;
+  return 0;
+});
+console.log(users);
+//king queen rose zhangsan
+
+for(var i in users){
+	console.log(users[i]['name']);
+}
+//king queen rose zhangsan
+
+//连接起来
+var arr=[1,2,3];
+res=arr.concat(4,5,6);//[1,2,3,4,5,6]
+res=arr.concat([4,5,6]);
+res=arr.concat([4,5,6],[7,8,9]);
+console.log(res);
+
+//[1,2,3,4,5,6,7,8,9]
+
+
+//取段
+var arr=['a','b','c','d','e','f','g','h'];
+res=arr.slice(0,3);//['a','b','c'] 0代表起始点，3代表几个
+res=arr.slice(2,-3);//['c','d','e']-3代表倒序数
+res=arr.slice(4);//['e','f','g','h']（0也算）从第四个开始
+console.log(res);
+
+var arr=['a','b','c','d','e','f','g','h'];
+res=arr.splice(0,1);//['a']
+res=arr.splice(5);//['g','h'];
+res=arr.splice(0,2,'!','?','%');//['!','?','%',d','e','f'];'!','?','%'代替了被截去的部分
+console.log(res);
+console.log(arr);//['b','c','d','e','f','g','h'];
+
+var arr=[1,2,3,4,5,6];
+res=arr.map(function(x){//每个元素都进行相对应的处理
+  return x*x;
+});
+console.log(res);//[1,4,9,16,25,36]
+
+var arr=['a!','b!','c','d!','e'];
+res=arr.map(Trans);
+function Trans(x){
+ return x.replace(/!/g,'?').toUpperCase()//大写
+}
+console.log(res);//['A?','B?','C','D?','E']
+
+//过滤
+var arr=[1,3,4,5,5,623,4,345,367,null,undefined,false,true,''];
+res=arr.filter(function(x){
+  return x<=10;
+});
+console.log(res);//[1,3,4,5,5,4,null,false,true,'']
+//求偶数
+res=arr.filter(function(x){
+  return x%2==0&&x!==false&&x!==null&&x!=='';
+});
+console.log(res);
+//[4,4]
+
+//累加
+var arr=[1,2,3,4,5];
+res=arr.reduce(function(a,b){
+   return a+b;
+})
+res=arr.reduce(function(a,b){
+   return a+b;
+},10)
+console.log(res);//15//25
+
+
+//every/some
+var age=[12,34,55,56,28,19];
+res=age.every(function(x){
+  return x>=18;
+});
+res=age.some(function(x){
+  return x>=18;
+});
+console.log(res);//false//true
+
+var arr=['a','b','c','d','e','a','bv','a'];
+ res=arr.indexOf('a');//0第一次搜索到的位置
+res=arr.indexOf('A');//-1没有
+res=arr.indexOf('a',2);//5，第二个a
+res=arr.lastIndexOf('a');//7，最后一个a
+console.log(res);
+console.log(Array.isArray(arr));//true
+console.log(Array.isArray([]));//true
+console.log(Array.isArray({}));//false
+console.log(arr.toString);//a,b,c,d,e,a,bv,a
+console.log(arr.join);//a,b,c,d,e,a,bv,a
+</script>
+</body>
+</html>

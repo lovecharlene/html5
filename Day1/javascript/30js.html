@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src='EventUtil.js'></script>
+</head>
+<body>
+	<input type='button' name='btn1' value='test' id='btn1'/>
+	<a href='http://taobao.com' id='taobao'>淘宝</a>
+	<div id='box1'><input type='button' value='test2' id='btn2'></div>
+	<script type="text/javascript">
+		var btn1=document.getElementById('btn1');
+		EventUtil.addHandler(btn1,'click',function(e){
+		   e=EventUtil.getEvent(e);
+		   var target=EventUtil.getTarget(e);
+		   alert(target.tagName);
+		});
+		var taobao=document.getElementById('taobao');
+		taobao.onclick=function(e){
+			e=EventUtil.getEvent(e);
+			EventUtil.preventDefault(e);//取消默认
+		}
+
+
+var box1=document.getElementById('box1');
+var btn2=document.getElementById('btn2');
+box1.onclick=function(e){
+	alert('div clicked');
+}
+btn2.onclick=function(e){
+	alert('button clicked');
+	e=EventUtil.getEvent(e);
+	EventUtil.stopPropagation(e);//取消冒泡
+}
+document.body.onclick=function(e){
+	alert('body clicked');
+}
+
+
+	</script>
+</body>
+</html>

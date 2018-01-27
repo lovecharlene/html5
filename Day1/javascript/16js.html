@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	//通过对象字面量的形式创建对象
+	var obj={};//没有任何属性的对象
+     alert(typeof obj);//object
+     var obj1={x:1,y:2,z:3};
+     var obj2={
+     	'x':1,
+     	test1:undefined,
+     	married:true,
+     	person:{
+     	username:'king',
+     	'for':'javascript关键字必须放到引号之间',
+        age:12,
+        addr:'北京'
+        }
+     };
+
+  //通过new object（）创建对象 
+   var obj3=new Object();//c创建一个空对象，{}
+   var arr=new Array();//空数组，[]
+   var date=new Date();//日期对象
+   var reg=new RegExp();//正则对象
+
+//通过构造函数的形式创建对象
+function Test(){
+
+}
+var obj4=new Test();
+
+
+function Test1(num1,num2){
+	this.n1=num1;
+	this.n2=num2;
+}
+var obj5=new Test1(5,6);
+alert(typeof obj5);
+alert(obj5 instanceof Test1);
+//通过object.create()创建对象
+var obj6=Object.create({x:1});
+var obj7=Object.create(null);
+//创建一个普通的空对象，
+var obj8=Object.create(Object.prototype);
+
+	var obj0 = new Date();//Sat Sep 16 2017 21:45:11 GMT+0800 (中国标准时间)
+  console.log(typeof obj0);//'Sat Sep 16 2017 21:45:11 GMT+0800 (中国标准时间)'
+	var obj1 = new Boolean(21);//true
+  console.log(obj1.toString()); //'true'
+  function foo() {}
+  var obj2 = new foo();
+  console.log(obj2.toString());
+  var obj3 = new Object();
+  console.log(obj3.toString());
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

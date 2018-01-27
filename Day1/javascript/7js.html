@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	//三元运算符等价if else
+	/*if(exp){
+		exp为true的代码段
+	}else{
+	    exp为false的代码段
+	}
+	exp?exp2:exp3;*/
+
+	 if(3>1){
+	 	document.write('aa');
+	 }else{
+	 	document.write('bb');
+	 }
+      document.write('<br/>');
+    var res=3>1?'aa' :'bb';
+    document.write(res);
+    var x=0/0;
+    var x=123;
+    res=isNaN(x)?0:x//123
+    alert(res);
+
+//逗号表达式
+var a,b,c,d;
+var i=1,j=2,k=3;
+var z=(n=1,m=2,p=3);
+alert(z+'\n'+n+'\n'+m+'\n'+p);
+//z的值等于最后一个表达式的值
+
+//void运算符,计算表达式的值，返回值均为undefined；
+z=void(n=1,m=2,p=3);
+alert(z);//undefined
+
+
+var y;
+/*x=123;//number
+x="king";//string
+x=true;//boolean
+x=null;//object
+x=undefined;//undefined
+x=[1,2,3];//object*/
+alert(typeof y);//undefined-----
+//typeof 检测变量类型
+
+
+// 运算符的优先级，改变优先级用（）
+alert((1+2)*4);
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

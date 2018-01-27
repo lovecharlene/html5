@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	// eval的使用
+	// 1.定义和用法
+	// 计算某个字符串，并执行其中的js代码
+	// eval（string）
+	// string必须，含有表达式或执行语句
+	// string有返回值的话
+	// 2实例
+	// 2.1字符串上的运用eval（）
+	// eval（'x=10；y=20;document.write(x*y)'）
+	// 2.2其他情况中使用eval（）
+	// 2.3使用eval（）解析jason格式字符串应注意的问题
+eval('x=10;y=20;document.write(x*y)');//200
+document.write(eval('2+2'));//4
+var x=10;
+document.write(eval('x+7'));//17
+
+
+//eval（）解析jason格式字符串
+var txt="{'userid':'11','name':'liyi'}";
+var txtObj = eval("(" + txt + ")");
+document.write(txtObj.userid);
+
+	</script>
+</body>
+</html>

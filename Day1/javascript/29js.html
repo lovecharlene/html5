@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<input type='button' value='test1' id='btn1'/>
+	<script type="text/javascript">
+		var btn1=document.getElementById('btn1');
+
+		btn1.onclick=function(e){
+			alert(e.type);//click
+		}
+	 
+		btn1.addEventListener('click', function(e){
+			alert(e.type);//click
+			alert(this.tagName);//input
+			alert(e.currentTarget);//[object HTMLInputElement]
+			alert(this===e.currentTarget)//true;
+			alert(this===e.target); //true
+		 },false);
+
+		// document.body.onclick=function(e){
+		 // 	alert(e.currentTarget===this);//true
+		 // 	alert(e.target===document.getElementById('btn1'));//true
+		 // 	alert(document.body===this);//true
+ 		// }
+</script>
+
+
+
+<input type='button' value='test2' id='btn2' />
+	<a href='http://www.baidu.com' id='baidu'>百度</a>
+<script type="text/javascript">
+	var btn2=document.getElementById('btn2');
+	var handler = function(e){
+		switch(e.type){
+			case 'click':
+				alert('clicked');
+				break;	
+			case 'mouseover':
+				e.target.style.backgroundColor='red';
+				break;
+			case 'mouseout':
+				e.target.style.backgroundColor='';
+				break;
+		}
+	};
+    btn2.onclick=handler;
+    btn2.onmouseover=handler;
+    btn2.onmouseout=handler;
+
+
+//取消默认行为
+var baidu=document.getElementById('baidu');
+   baidu.onclick=function(e){
+   	alert(e.cancelable);//值为true才能取消
+   	e.preventDefault();
+   }
+</script>
+
+
+
+<input type='button' value='test3' id='btn3' />
+<script type="text/javascript">
+
+//evevtPhase检测属性处于第几个阶段
+	var btn3=document.getElementById('btn3');
+	btn3.onclick=function(e){
+		alert(e.eventPhase);//2
+	}
+
+document.body.addEventListener('click',function(e){
+    alert(e.eventPhase);
+},true);//1
+
+
+document.body.onclick=function(e){
+alert(e.eventPhase);//3
+}
+
+//e.eventPhase的值1为捕捉阶段，2为目标对象阶段，3为冒泡阶段
+
+</script>
+
+
+
+	
+</body>
+</html>

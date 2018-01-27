@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+//for循环
+//exp1无条件执行；exp2判断是否执行循环体；exp3做增量的操作。
+	for(var i=1;i<=10;i++){
+		document.write('hello maizi<br/>');
+	}
+	//10遍循环hello maizi
+	//alert(i);
+	document.write(i);
+
+	//循环输出0-100；
+	document.write('循环输出0-100.<br/>')
+	for(var i=0;i<=100;++i){
+		document.write(i +' ');
+	}
+//循环输出100-0；
+document.write('<hr color="red"/>');
+document.write('循环输出100-0<br/>')
+for(var i=100;i>=0;i--){
+	document.write(i +' ');
+}
+//循环输出1-100之间的奇数。
+document.write('<hr color="red"/>');
+document.write('循环输出1-100之间的奇数<br/>')
+for(var i=1;i<100;i+=2){
+	document.write(i + ' ');
+}
+//方法二
+document.write('<br/>循环输出1-100之间的奇数<br/>');
+for(var i=1;i<=100;++i){
+	if(i%2==1){
+	document.write(i +' ');	
+	}
+}
+//循环输出1-100之间数字的和；
+document.write('<hr color="red"/>');
+document.write('循环输出1-100之间的数字和<br/>') 
+var sum=0;
+for(var i=1;i<=100;i++){
+	sum+=i;
+	}
+document.write(sum);
+
+
+//循环输出1-100之间奇数的和；
+document.write('<hr color="red"/>');
+document.write('循环输出1-100之间的奇数和<br/>');
+var sum=0;
+for(var i=1;i<=100;++i){
+	if(i%2==1){
+	sum+=i;
+	}
+  }
+document.write(sum);
+document.write('<hr color="red"/>');
+
+//循环输出1-100之间的偶数。
+document.write('<hr color="red"/>');
+document.write('循环输出1-100之间的偶数<br/>')
+for(var i=2;i<=100;i+=2){
+	document.write(i + ' ');
+}
+
+//循环输出1-100之间偶数的和；
+document.write('<hr color="red"/>');
+document.write('循环输出1-100之间的偶数和<br/>');
+var sum=0;
+for(var i=2;i<=100;i+=2){
+	sum+=i;
+	}
+document.write(sum);
+
+//通过break结束死循环
+document.write('<hr color="red"/>');
+for(var i=1;i>=0;++i){
+	if(i>100){
+		break;
+	}
+	document.write(i+'<br/>');
+}
+//continue代表跳过当次循环进入下一循环
+document.write('<hr color="red"/>');
+for(var i=1;i<=10;i++){
+	if(i==3){
+		continue;
+	document.write('hello king');//被跳过看不到
+	}
+ document.write(i+'<br/>');
+}
+	
+//for循环嵌套
+for(var i=1;i<=3;i++){
+	document.write('外层循环第+i+次结果<br/>');
+	 for(var j=1;j<=2;j++){
+	document.write('内层循环第+j+次结果<br/>');
+    }
+    document.write('<br/>');  
+   }
+</script>
+
+  <!-- 表格，外循环控制行，内循环控制列； -->
+<table border='1' cellpadding='0' cellspacing='0' bgcolor='aqua' width='80%'>
+<script type="text/javascript">
+	for(var i=1;i<=3;i++){
+   	  document.write('<tr>');
+   	   for(var j=1;j<=3;j++){
+   	   	  document.write('<td>x</td>');
+   	   }
+   	   document.write('</tr>'); 
+   }
+	</script>
+</table>
+
+<!-- 九九乘法表 -->
+<script type="text/javascript">
+document.write('<hr color="red">');
+document.write('<table border="1" cellpadding="0" cellspacing="0" bgcolor="#ABCDEF" width="80%">');
+for(var i=1;i<=9;++i){
+	document.write('<tr>');
+   for(var j=1;j<=i;j++){
+   	document.write('<td>'+i+'x'+j+'='+(i*j)+'</td>');
+   }
+	document.write('</tr>');
+}
+	document.write('</table>');
+</script>
+
+
+//九九乘法表倒表
+<script type="text/javascript">
+document.write('<hr color="red">');
+document.write('<table border="1" cellpadding="0" cellspacing="0" bgcolor="#ABCDEF" width="80%">');
+for(var i=9;i>=1;i--){
+	document.write('<tr>');
+   for(var j=1;j<=i;j++){
+   	document.write('<td>'+i+'x'+j+'='+(i*j)+'</td>');
+   }
+	document.write('</tr>');
+}
+	document.write('</table>');
+</script>
+
+
+
+</body>
+</html>

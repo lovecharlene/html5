@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// function a(param){
+  //          function b(param1){
+  //          	return param1+10;
+  //          };
+  //          return '在a函数体内调用b函数的结果为：'+b(param);
+		// }
+		// document.write(a(5));//15
+		// document.write(b(1));//undefined
+
+		// 返回函数的函数
+		// function a(){
+  //          alert('aaa');
+  //          return function(){
+  //          	alert('bbb');
+  //          };
+		// }
+  //      // a();//aaa
+  //      var func=a();
+  //      func();//aaa bbb
+  //     a()();//立即调用 aaa bbb
+
+     //重写自己的函数
+// function a(){
+// 	alert('aaa')
+// 	a=function(){
+// 		alert('bbbb');
+// 	}
+// }
+// a();//aaa
+// a();//bbbb 第一次的值被覆盖
+
+var a = function(){
+	function setUp(){
+		var setUp='doSomeThing'
+	}
+	function doWhat(){
+		alert('要执行的操作');
+	}
+	setUp();
+	return doWhat;
+}();//自调用，立即调用
+alert(a());//要执行的操作
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<form action="提交到哪儿去" method="post" enctype="multipart/form-data">
+
+<!-- get:参数显示在url地址栏上 -->
+<!-- post：不在地址栏显示参数 -->
+<!-- action：url 提交到哪儿去 -->
+<p>
+	用户名:<input type="text" name="username">
+</p>
+<p>
+	密码：<input type="password" name="pwd">
+</p>
+<p>
+	性别：男：<input type="radio" name="gender" value="男"> &nbsp;
+	女：<input type="radio" name="gender" value="女">
+</p>
+<p>
+	爱好：<br>
+	篮球：<input type="checkbox" name="hobby"><br>
+	足球：<input type="checkbox" name="hobby"><br>
+	排球：<input type="checkbox" name="hobby"><br>
+	乒乓球：<input type="checkbox" name="hobby"><br>
+</p>
+<p>
+	学历：<br>
+	<select name="xueli">
+		<option value="doctor">博士</option>
+		<option value="master">研究生</option>
+		<option value="university">本科</option>
+		<option value="high shool">高中</option>
+	</select>
+</p>
+<p>
+	个人简历：<br>
+	<textarea name="intro"  placeholder="请输入你的个人简历"></textarea>
+</p>
+<p>
+		<input type="file" name="pic">
+</p>
+<p>
+	<input type="hidden" name="ip"	value="192.168.1.100">
+</p>
+<p>
+	<input type="submit" value="马上提交">
+	<input type="reset" value="重新填写">
+</p>
+</form>
+</body>
+</html>

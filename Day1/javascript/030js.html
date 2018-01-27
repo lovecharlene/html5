@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+   <input type='button' value='click me' id='btn1'>
+	<script type="text/javascript">
+	var btn1=document.getElementById('btn1');
+	btn1.onclick=function(e){
+         alert('Phase:'+e.eventPhase);//2
+	}
+	document.body.addEventListener('click',function(e){
+		alert('bodyPhase:'+e.eventPhase);//3
+	},false);
+
+document.body.addEventListener('click',function(e){
+       alert('capture phase:'+e.eventPhase);//1
+},true);
+
+
+
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<a href='http://baidu.com' id='bd'>百度</a>
+<input type='button' value='test' id='btn1'/>
+	<script type="text/javascript">
+	    var btn1=document.getElementById('btn1');
+		var handler = function(e) {
+			switch(e.type) {
+				case 'click':
+					alert('clicked');
+					break;
+				case 'mouseover': 
+					this.style.backgroundColor='red';
+					break;
+				case 'mouseout':
+					this.style.backgroundColor='';
+					break;
+			}
+		};
+		btn1.onclick=handler;
+		btn1.onmouseover=handler;
+		btn1.onmouseout=handler;
+
+
+		var a=document.getElementById('bd');
+		a.onclick=function(e){
+		   alert('cancelable:' +e.cancelable);
+		   e.preventDefault();
+		}
+        a.onmouseover=function(e){
+        	this.style.backgroundColor='blue';
+
+        }
+       a.onmouseout=function(e){
+        	this.style.backgroundColor='';
+
+        }
+	</script>
+
+
+</body>
+</html>

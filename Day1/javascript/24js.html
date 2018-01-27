@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	//大小写敏感
+	var patt=new RegExp('javascript');
+	var res=patt.test('this is javascript course');
+	console.log(res);
+
+	patt=/javascript/;//(方式二)
+	res=patt.test('this is javascript show time');
+    console.log(res);//true
+
+    res=/[abc]/.test('lue');//false
+    res=/[^abc]/.test('lue');//true 非
+    res=/[0-9]/.test('this is a test');//false
+    res=/[a-z]/.test('264827395');//false
+    res=/php|javascript|ios/i.test('PHP');//true或者，或者
+    console.log(res);
+   
+
+   //元字符
+   res=/./.test('\n');//false,任意字符，除了\n
+   res=/./.test('this is a test');//true
+   res=/\w/.test('helloworld');//true,[a-z,A-Z,0-9]
+    res=/\W/.test('!@#');//true,[^a-z,A-Z,0-9]
+     res=/\s/.test('hello world');//true,匹配空白符
+    res=/\S/.test('   ');//false,匹配非空白符
+    res=/\bg/.test('good');//true，g前面是不是边界
+    res=/o\b/.test('good');//false，o后面是不是边界
+     res=/o\B/.test('good');//true，o后面不是边界
+
+   console.log(res);
+
+//量词
+res=/o+/.test('google');//至少一次 true
+res=/o*/.test('google');//任意次，包括0 true
+res=/o?/.test('ggle');//任意次包括0 true
+res=/o{2}/.test('google');//true 2次或2次以上
+res=/o{1,3}/.test('google');//true 1次2次3次或以上
+res=/^k/.test('king');//true 以k开始
+res=/i$/.test('mai');//true 以i结尾
+res=/o(?=w)/.test('helloworld');//true o后面跟着w
+res=/o(?!w)/.test('hellowrld');//false o后面不跟w
+res=/\d/.test('dakhfiw');//false，[0-9]任意数字
+res=/\D/.test('dakhfiw');//true，[^0-9]不是数字
+
+console.log(res);
+
+//搜索
+res=/is/i.exec('this is a test');//i就是忽略大小写 
+//index 2,从0开始数，在第三个字母那匹配到
+//return [0:'is', index: 2, 'input':this is a test];
+console.log(res);//res => array
+console.log('res[0]=' + res[0]);//is
+
+var str='this is a test hello maizi hello world';
+
+var patt=/i/ig;//g全局
+var myArr;
+while((myArr=patt.exec(str))!==null){ 
+	//[0:'i', index: 2, 'input':'this is a test hello maizi hello world'];
+	//patt.lastIndex: 3,6
+	var msg='找到了'+myArr[0]+' ';
+	msg += '下一个匹配从'+patt.lastIndex; // i += 1; i = i+1
+	console.log(msg);
+}
+
+var str='this is a test';
+res=str.match(/IS/i);//index2(从第3个开始匹配)
+console.log(res);
+res=str.match(/IS/ig);
+console.log(res);
+res=str.search(/is/i);//位置：2
+console.log(res);
+var str1=str.replace(/is/ig,'!')//把is替换成！
+console.log(str1);
+
+var str='2015-09-27';
+res=str.replace(/(\d{4})-(\d{2})-(\d{2})/,'$2$3$1');
+	console.log(res);//09-27-2015
+
+	str='Hello Maizi Edu';
+	res=str.replace(/[A-Z]/g,func);
+	function func(match){
+		return 'king_'+match.toLowerCase(); //toUpperCase()(大写小写)
+	}
+	console.log(res);//king_hello king_maizi king_edu
+	res = str.split(/\s+/);
+	console.log(res);//数组'hello''maizi''edu'
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

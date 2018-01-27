@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form method='post' action='http://www.mytest.com/ajax-09.php' onsubmit='return checkform()';>
+	用户名：
+		<input type='text' name='username' id='username' onfocus='clearTips()' onblur='checkName()'/>
+		<br/><br/>
+		密码:
+		<input type='pasword' name='userpass1' id='userpass1' onfocus='clearTips()' onblur='checkPassFirst()'/>
+		<br/><br/>
+		确认密码:
+		<input type='pasword' name='userpass2' id='userpass2' onfocus='clearTips()' onblur='checkPass()'/>
+		<br/><br/>
+		邮箱:
+		<input type='text' name='useremail' id='useremail' onfocus='clearTips()' onblur='checkemail()'/>
+		<br/><br/>
+		手机:
+		<input type='text' name='usermobile' id='usermobile' onfocus='clearTips()' onblur='checkMobile()'/>
+		<input type='button' value='获取手机验证码' id='mobilebtn' style='display:none' onclick='getMobileCode()'/>
+		 验证码:
+		<input type='text' name='vcode' id='vcode' onfocus='clearTips()' onblur='checkCode()'/>
+		<br/><br/>
+		<img id='code' src='http://www.mytest.com/ajax/code.php' style='width:80px;height:24px;border:0;' onclick=changeCode()>
+		<br/><br/>
+			<p style='clear:both;width:500px;color:red;display:none;' id='tips' error=''></p>
+		<input type='submit' value='注册' id='submit'/>
+		<br/><br/>
+	</form>
+
+	<script type="text/javascript">
+// ajax项目：使用ajax注册用户
+// 1.验证用户名是否被用
+// 2.获取手机短信验证码
+// 3.刷新表单验证码
+
+function checkform(){
+	var name=document.getElementById('username').value;
+	if(name.length<=0){
+
+	}
+}
+
+function loading(){
+	tipObj=document.getElementById('tips');
+	tipObj.style.display='block';
+	tipObj.innerHTML='加载中...';
+}
+
+function removeloading(){
+	tipObj=document.getElementById('tips')
+	tipObj.innerHTML='';
+	tipObj.style.display='none';
+}
+
+function isNull(str) {//null undefined
+	return !(str && str.length > 0);
+}
+
+function checkName(){
+	var name=document.getElementById('username').value;
+	if(isNull(name)){//false
+       showTips('请输入用户名');
+	}
+	loading();
+	var sendData={id: 11, username:'name',action:'checkname'};
+	Ajax('get','check.php',sendData, function(data){
+       removeLoading();
+       var user=JSON.parse(data);//eval("(" + data +")");
+       if(user.id){
+          showTips('用户名已被占用，请重新输入用户名');
+       }
+	}, function(data){
+		showTips('ajax请求错误');
+	});
+}
+
+
+function checkEmail(strEmail){
+	var strEmail=document.getElementById('useremail');
+	var emailReg=/^[\w-]+(\.[\w-]+*@[\w-]+(\.[\w-]+)+$/;
+		if(!emailReg.test(strEmail.value)){
+			showTips('邮箱输入有误，请重新输入');
+			return false;
+		}
+	}
+
+
+function changeCode(){
+	var url=document.getElementById('code').src;
+	var rand=Math.floor(Math.random()*(1000+1));
+	url+='?'+rand;
+	docuemnt.getElementById('code').src=url
+}
+
+
+function checkMobile(s){
+   var obj=document.getElementById('usermobile');
+   var regu=/^[1][3|4|5|8][0-9]{9}$/gi;
+   var re=new RegExp(regu);
+   if(!re.test(obj.value)){
+   	showTips('手机号输入有误，请重新输入')
+   	 var obj=document.getElementById('mobilebtn');
+   	 obj.style.display='none';//隐藏按钮
+   	 obj.display=true;
+   	 return false;
+
+   }
+   var obj=docuemnt.getElementById('mobilebtn');
+   obj.style.display='block';//展示按钮（获取手机验证码）
+   obj.display=false;
+}
+
+function getMobileCode(){
+	var obj=document.getElementById('usermobile');
+	var regu=/^[1][3|4|5|8][0-9]$/gi;
+	var re=new RegExp(regu);
+	if(!re.test(obj.value)){
+		showTips('手机号输入有误，请重新输入');
+		return false;
+	}
+	sendData={mobile:object.value,action:'getcode'}
+	Ajax('get','check.php',sendData,function(data){
+		tipObj=document.getElementById('tips');
+		tipObj.style.display='block';
+		tipObj.innerHTML='手机验证码是：'+data;
+	 },function(data){
+		showTips('手机验证码获取错误');
+	});
+}
+
+
+
+
+function getCookie(objName){//获取指定名称的cookie的值。
+     var arrStr=document.cookie.split(';');
+     for(var i=0;i<arrStr.lenghth;i++){
+        var temp=arrStr[i].split('=');
+        if(temp[0]===objName)return unescope(temp[1]);
+    
+   	 }
+}
+
+function delCookie(name){//为了删除指定名称的cookie，可以将其过期时间设定为一个过去的时间。
+	var date=new Date();
+	date.setTime(date.getTime()-10000);
+	document.cookie=name+'=a;expires='+date.toGMTString();
+}
+function Ajax(type,url,data,success,failed){
+//创建ajax对象
+      if(window.XMLHttpRequest){
+      	xhr=new XMLHttpRequest();
+      }else{
+      	xhr=new ActiveXObject('Microsoft.XMLHTTP')
+      }
+      var type=type.toUpperCase();
+      //用于清除缓存
+      var random=Math.random();
+       if(typeof data=='object'){
+       		var str='';
+       		for(var key in data){
+       			str+=key+'='+data[key]+'&';
+       		}
+       		//method=get&url=
+       		data=str.replace(/&$/,'')
+      }
+        if(type==='GET'){
+        	if(data){
+        		xhr.open('GET', url + '?' +data,true);
+        	}else{
+        		xhr.open('GET', url + '?t=' +random,true);
+        	}
+        	xhr.send();
+        }else if(type==='POST'){
+			xhr.open('POST',url,true)
+			//如果需要像html表单那样POST数据，请使用setRequestHeader()来添加http头。
+			xhr.setRequestHeader('Content-type','application/x-www-form-urlencode');
+			xhr.send(data);
+        }
+//处理返回数据
+   xhr.onreadystatechange=function(){
+	 	if(xhr.readyState==4 && xhr.status==200){
+			success(xhr.responseText);
+	   }else{
+	   		if(failed){
+				failed(xhr.status);
+	   		}
+	   }
+    }
+}
+
+function checkPassFirst(){
+
+}
+
+
+
+	</script>
+
+</body>
+</html>

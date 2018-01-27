@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<script type="text/javascript">
+	document.write(parseInt('34')+'<br/>');//34
+	document.write(parseInt('3king')+'<br/>');//3
+	document.write(parseInt('maizi')+'<br/>');//NaN
+	document.write(parseInt('11 22 33 44')+'<br/>');//11
+	document.write(parseInt('F')+'<br/>');//NaN
+	document.write(parseInt('F',16)+'<br/>');//15,16进制
+	document.write(parseInt('17',8)+'<br/>');//15，8进制
+	document.write(parseInt('0xfff')+'<br/>');//4095 16进制
+	//paraseInt字符串转换成整数值
+
+	document.write('<hr/>');
+	document.write(parseFloat('2.6')+'<br/>');//2.6
+    document.write(parseFloat('323')+'<br/>');//323
+    document.write(parseFloat('2e2')+'<br/>');//200
+    document.write(parseFloat('123abc')+'<br/>');//123
+    document.write(parseFloat('2.6')+'<br/>');//2.6
+    document.write(parseFloat('a2.6')+'<br/>');//NaN
+//转换成浮点型
+ 
+ //通过isFinite（）检测是否无穷值
+ var x=123;
+ x=Infinity;//false
+ x=-Infinity;//false
+ x=0/0;//false
+ x=0;//true
+ alert(isFinite(x));
+
+
+ x=NaN;//true
+ x=123;//false
+ x=parseInt('king3');//true,先转换成NaN，再判定true
+ alert(isNaN(x));
+ //isNaN（）检测是否是一个数值
+
+
+
+
+</script>
+	
+</head>
+<body>
+	
+</body>
+</html>

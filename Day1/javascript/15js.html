@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	var test=function calc(a,b){
+		return a+b;
+	}
+	alert(test(1,2));//3
+	var test1=test;
+	alert(test1(3,4));//7
+
+	
+
+	//匿名函数,适合执行一次性或初始化的任务，无法重复执行。
+	var test1=function(x,y){
+		return x*y;
+	};
+	123;
+	'king';
+	var test2=function(x,y){return x*y;};
+	alert(test2(5,4));//20
+	 var test3=test2;
+	 alert(test3(3,4));//12
+
+	 
+
+	 //回调函数
+	 function calc(x, y){
+	 	return x()+y();
+	 }
+	 function test5(){
+	 return 3;
+	}
+	function test6(){
+		return 5;
+	}	
+     //alert(calc(test5,test6));
+     alert(calc(function(){return 5;}, function(){return 10;}));
+
+
+
+     function cheng2(a,b,c){
+     	var i,arr=[];
+     	for(i=0;i<arguments.length;i++){
+     		arr[i]=arguments[i]*2;
+     	}
+        return arr;
+     }
+      function jia1(a){
+      	return a+1;
+      }
+	 var qq=[];
+	 qq=cheng2(10,20,30,40);
+	 alert(qq);
+	 for(var i=0;i<qq.length;i++){
+	 	qq[i]=jia1(qq[i]);
+	 }
+alert(qq);
+
+
+
+function addOne(a){
+   return a+1;
+}
+function test(a,b,c,callback){
+	var i,arr=[];
+	for(i=0;i<3;i++){
+		arr[i]=callback(arguments[i]*2);
+	}
+	return arr;
+}
+alert(test(5,6,7,addOne));
+alert(test(5,6,7,function(a){return a+1}));
+
+
+
+function test(a,b){
+	return a*b;
+}
+alert(test1.call(test1,5,10));
+var params=[3,4];
+alert(test1.apply(test1,params));
+
+(
+function(){
+	alert('this is a test');
+}
+)();
+
+(
+	function(a,b){
+	alert(a+b);
+}
+)(3,5);
+//自调用函数
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

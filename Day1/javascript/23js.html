@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+var d=new Date();//此刻的具体时间
+console.log(d);
+
+var d=new Date(1335678883334);//从1970加上这些毫秒得到的的具体时间
+console.log(d);
+
+var d=new Date(2017,9,19);//2017年10月19（从0开始计数）
+console.log(d);
+
+var d=new Date(15,0);//1915年1月1日0时0分0秒
+console.log(d);
+
+var d=new Date();//此刻的具体时间
+console.log(d);
+
+var d=new Date(2013,13,2);//2014,2,2
+console.log(d);
+
+
+console.log(Date.now());//1970年到此刻的毫秒数
+console.log(new Date(1505806778816));
+//两个互换
+
+console.log(Date.parse('Sun Feb 02 2014 00:00:00 GMT+0800'));//1970年到这个时间的毫秒数
+console.log(Date.parse('Aug,4,2015'));//1970年到这个时间的毫秒数
+
+console.log(Date.UTC(2015,09,01,0,0,0));//1970年到这个时间的毫秒数
+
+var d=new Date('2015-09-26 12:23:34');
+console.log(d.getDate());//这个时间这个月的第几天 26
+console.log(d.getDay());//这个时间这一天在这一周的第几天，《周日算0》  sat 6
+console.log(d.getFullYear());//这个时间的年份 2015
+console.log(d.getMonth());//这个时间的月份 8
+console.log(d.getHours());//这个时间的小时 12
+console.log(d.getMinutes());//这个时间的分钟 23
+console.log(d.getSeconds());//这个时间的秒 34
+console.log(d.getMilliseconds());//这个时间的毫秒 0
+
+console.log(d.getTime());//从1970年到现在的毫秒数
+
+d.setDate('11');
+console.log(d);//设置日，返回9月11
+d.setFullYear('2016');
+console.log(d);//设置日，返回2016年9月11
+d.setMonth('2');
+console.log(d);//设置日，返回3月
+
+d.setTime(144321414000);
+console.log(d.getTime());//，返回毫秒数144321414000
+console.log(d.toString());//
+//1970年加上这些毫秒的时间转化为字符串
+console.log(d.valueOf());//返回毫秒数144321414000
+
+console.log(d.toJSON());//返回1970年加上这些毫秒的时间
+
+ d=new Date('1974-07-29T09:16:54.000Z');
+console.log(d);//返回Mon Jul 29 1974 17：16：54 GMT+0800
+
+
+	</script>
+</body>
+</html>

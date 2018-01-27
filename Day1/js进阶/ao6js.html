@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+var n=Number('123.123');
+console.log(n);//123.123
+console.log(typeof n);//number
+
+var n=new Number('123.123');
+console.log(n);//Number
+console.log(typeof n);//object
+
+console.log(Number.MAX_VALUE);//最大正数1.7976931348623157e+308
+console.log(Number.MIN_VALUE);//最小正数5e-324
+console.log(Number.NaN);//NaN非数字
+console.log(Number.NEGATIVE_INFINITY);//-Infinity负无穷
+console.log(Number.POSITIVE_INFINITY);//Infinity正无穷
+
+console.log(Number.isNaN(NaN));//true
+console.log(Number.isNaN(Number.NaN));//true
+console.log(Number.isNaN(0/0));//true
+
+console.log(Number.isNaN('NaN'));//false
+console.log(Number.isNaN(''));//false
+console.log(Number.isNaN('123'));//false
+console.log(Number.isNaN('true'));//false
+console.log(Number.isNaN('undefined'));//false
+console.log(Number.isNaN(' '));//false
+
+//toFixed()返回一个字符串，以定点数的形式表达一个数字，并四舍五入
+var  n=12345.6789;
+console.log(n.toFixed());//12346
+console.log(n.toFixed(1));//保留一位小数12345.7
+console.log(n.toFixed(2));//保留两位小数12345.68
+console.log(n.toFixed(6));//保留两位小数12345.678900
+
+console.log(1.23e+20.toFixed(2));//123000000000000000000.00//1.23*10^20
+console.log(1.23e-20.toFixed(2));//0.00//1.23*10^-20
+console.log(2.45.toFixed(1));//2.5
+
+//toExponential（）返回一个字符串，以指数形式表示某一数字
+var n=77.1234;
+console.log(n.toExponential());//7.71234e+1
+console.log(n.toExponential(2));//7.71e+1
+console.log(n.toExponential(4));//7.7123e+1
+
+//toPrecision（）返回一个字符串，指数型或小数型
+var n=5.1234567;
+console.log(n.toPrecision());//5.1234567
+console.log(n.toPrecision(1));//5
+console.log(n.toPrecision(2));//5.1
+console.log(n.toPrecision(5));//5.1235
+console.log((1234.567).toPrecision(2));//1.2e+3
+
+var n=new Number(255);
+console.log(n.toString());//255
+console.log(n.toString(10));//十进制255
+console.log(n.toString(16));//十六进制ff
+console.log(n.toString(2));//二进制11111111
+
+//Boolean构造函数的参数不是一个布尔值，参数转换成布尔值。参数是0，-0，null，false，NaN，undefined，“ ”，生成Boolean对象的值为false。
+var b=new Boolean();
+console.log(typeof b);//object
+console.log(b.valueOf());//false
+console.log(typeof b.valueOf());//boolean
+
+var b=new Boolean(0);
+b=new Boolean(-0);
+b=new Boolean(null);
+b=new Boolean(false);
+b=new Boolean(undefined);
+b=new Boolean(''); 
+console.log(b);//__proto__:Boolean [[PrimitiveValue]]:false
+
+var b=new Boolean('false');//true
+console.log(b);
+
+//尽量使用布尔函数，不要使用布尔对象
+var b=Boolean('false');
+console.log(b);//true
+
+
+
+
+
+	</script>
+</body>
+</html>

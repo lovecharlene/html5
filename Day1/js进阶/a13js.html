@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+function Shape(){
+	this.name='shape';
+	this.toString=function(){
+		return this.name;
+	}
+}
+function TwoDshape(){
+	this.name='2D shape';
+}
+function Triangle(side,height){
+	this.name='triangle';
+	this.side=side;
+	this.height=height;
+	this.getArea=function(){
+		return this.side*this.height/2
+	}
+}
+TwoDshape.prototype=new Shape();
+Triangle.prototype=new TwoDshape();
+//重置construct属性
+TwoDshape.prototype.constructor=TwoDshape;
+Triangle.prototype.constructor=Triangle;
+
+var myTriangle=new Triangle(5,10);
+console.log(myTriangle.getArea());//25
+console.log(myTriangle.toString());	//triangle
+console.log(myTriangle.constructor);//function Triangle(){}
+console.log(myTriangle instanceof Triangle);//true
+console.log(myTriangle instanceof TwoDshape);//true
+console.log(myTriangle instanceof Shape);//true
+console.log(Shape.prototype.isPrototypeOf(myTriangle));//true
+console.log(TwoDshape.prototype.isPrototypeOf(myTriangle));//true
+console.log(Triangle.prototype.isPrototypeOf(myTriangle));//true
+console.log(Object.prototype.isPrototypeOf(myTriangle));//true
+console.log(String.prototype.isPrototypeOf(myTriangle));//false
+
+var td=new TwoDshape();
+console.log(td.constructor);//function TwoDshape()
+console.log(td.toString());//2D shape
+
+var s=new Shape();
+console.log(s.constructor);//function Shape()
+console.log(s.toString());//shape
+
+
+	</script>
+
+</body>
+</html>

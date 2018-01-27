@@ -1,0 +1,60 @@
+1）、Http 请求
+
+XMLHttpRequest
+
+2）、XMLHttpRequest 对象
+
+request = new XMLHttpRequest()
+firfox,opera,safari,chrome
+
+xmlhttp = new ActiveXObject('Msxml2.XMLHTTP')
+IE6+
+
+xmlhttp = new ActiveXObject('Microsoft.XMLHTTP')
+
+
+2.1、创建XMLHttpRequest 对象
+
+2.2、请求服务器
+2.2.0、onreadystatechange
+
+request.onreadystatechange = function() {
+	//这里要写一些代码
+	if (request.readyState == 4) {
+		//从服务器获取数据的代码，并做相应处理
+		alert(request.responseText);//{"errNo":"0","data": { "redDot": [  ], "newWord": [  ], "layer": [  ] }}
+	}
+}
+
+
+
+2.2.1、readyState 属性
+0
+1 
+2
+3 
+4 
+
+
+2.2.2、responseText 属性
+
+
+2.2.3、 open()
+GET/POST
+URL
+异步处理标志
+
+2.2.4、send()
+
+request.open("GET", "test.txt", true);
+request.onreadystatechange = function() {
+	//这里要写一些代码
+	if (request.readyState == 4) {
+		//从服务器获取数据的代码，并做相应处理
+		alert(request.responseText);
+	}
+}
+request.send(null)
+
+
+2.3、处理响应

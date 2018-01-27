@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//.constructor返回创建该对象的构造函数
+function Test(){}
+	console.log(Test.constructor);//ƒ Function() { [native code] }
+
+function Test1(x,y,z){
+	return x+y+z;
+}
+console.log(Test1.length);//3
+
+//caller 返回调用当前函数的函数
+function A(){
+	return A.caller;
+}
+function B(){
+	return A();
+}
+console.log(B());
+// ƒ B(){
+// 	return A();
+// }
+console.log(A());//null
+
+//arguments
+function Test2(){
+	return arguments;//参数列表
+}
+console.log(Test2(1,2,3,34,'a',5,6,6,7));
+//callee属性，这个属性引用的是当前被引用的函数对象  
+// [1, 2, 3, 34, "a", 5, 6, 6, 7, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+
+function f(){
+	return arguments.callee;
+}
+console.log(f());//ƒ f(){
+// 	return arguments.callee;
+// }
+
+//匿名函数的递归应用
+(
+	function(count){
+         if(count<=3){
+         	alert(count);
+         	arguments.callee(++count);//小括号是执行它的引用函数
+         }
+	   }
+	)(0);
+//0 1 2 3
+
+//.toString()
+function f1(a,b,c){
+	return a+b+c;
+}
+console.log(f1.toString());
+//function f1(a,b,c){
+// 	return a+b+c;
+// }
+console.log(f1.valueOf());
+//ƒ f1(a,b,c){
+// 	return a+b+c;
+// }
+
+var obj={
+	name:'king',
+	say:function(somebody){
+		return 'Hello '+somebody+' this is '+this.name;
+	}
+};
+console.log(obj.say('queen'));//Hello queen this is king
+
+var obj1={
+	name:'maizi'
+};
+console.log(obj.say.call(obj1,'js'));//Hello js this is maizi
+//call:调用一个对象的一个方法，以另一个对象替换当前对象。obj1替换obj 
+var obj2={
+	calc:function(x,y,z){
+     return x+y+z;
+	}
+};
+console.log(obj2.calc.call(null,1,2,3));//6
+console.log(obj2.calc.apply({},[3, 4, 5]));
+//12
+//call()调用当前Function对象，可同时改变函数内的this指针引用，函数参数分别一个个传入
+
+//apply()调用当前Function对象，可同时改变函数内的this指针引用，函数参数以数组或arguments对象的
+ 
+ //toString（）返回定义该Function对象的字符串
+ //valueOf（）返回Function对象本身
+</script>
+</body>
+</html>
